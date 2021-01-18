@@ -6,51 +6,83 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:07:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/16 17:46:25 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/18 12:51:07 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "utils.h"
 #include <stdio.h>
-#include <math.h>
 
-typedef struct	s_vec3
+t_vec3	vec3(double a, double b, double c)
 {
-	double	x;
-	double	y;
-	double	z;
-}				t_vec3;
+	t_vec3	v;
 
-t_vec3	ft_create_vector(double a, double b, double c)
+	v.x = a;
+	v.y = b;
+	v.z = c;
+	return (v);
+}
+
+t_point3 point3(double a, double b, double c)
 {
-	t_vec3	vec;
+	t_point3	p;
 
-	vec.x = a;
-	vec.y = b;
-	vec.z = c;
+	p.x = a;
+	p.y = b;
+	p.z = c;
+	return (p);
+}
+
+t_color3 color3(double a, double b, double c)
+{
+	t_color3	color;
+
+	color.x = a;
+	color.y = b;
+	color.z = c;
+	return (color);
+}
+
+void	vset(t_vec3 *vec, double a, double b, double c)
+{
+	vec->x = a;
+	vec->y = b;
+	vec->z = c;
+}
+
+t_vec3	vsum(t_vec3 a, t_vec3 b)
+{
+	a.x += b.x;
+	a.y += b.y;
+	a.z += b.z;
+	return (a);
+}
+
+t_vec3	vsum2(t_vec3 vec, double a, double b, double c)
+{
+	vec.x += a;
+	vec.y += b;
+	vec.z += c;
 	return (vec);
 }
 
-t_vec3	ft_vec_sum(t_vec3 a, t_vec3 b)
+t_vec3	vsub(t_vec3 a, t_vec3 b)
 {
-	t_vec3 v;
-
-	v.x = a.x + b.x;
-	v.y = a.y + b.y;
-	v.z = a.z + b.z;
-	return (v);
+	a.x -= b.x;
+	a.y -= b.y;
+	a.z -= b.z;
+	return (a);
 }
 
-t_vec3	ft_vec_sub(t_vec3 a, t_vec3 b)
+t_vec3	vsub2(t_vec3 vec, double a, double b, double c)
 {
-	t_vec3 v;
-
-	v.x = a.x - b.x;
-	v.y = a.y - b.y;
-	v.z = a.z - b.z;
-	return (v);
+	vec.x -= a;
+	vec.y -= b;
+	vec.z -= c;
+	return (vec);
 }
 
-t_vec3	ft_vec_mul(t_vec3 a, double t)
+t_vec3	vmul(t_vec3 a, double t)
 {
 	t_vec3 v;
 
@@ -60,7 +92,7 @@ t_vec3	ft_vec_mul(t_vec3 a, double t)
 	return (v);
 }
 
-t_vec3	ft_vec_div(t_vec3 a, double t)
+t_vec3	vdiv(t_vec3 a, double t)
 {
 	t_vec3 v;
 
@@ -70,12 +102,12 @@ t_vec3	ft_vec_div(t_vec3 a, double t)
 	return (v);
 }
 
-double	ft_vec_dot(t_vec3 a, t_vec3 b)
+double	vdot(t_vec3 a, t_vec3 b)
 {
 	return ((a.x * b.x) + (a.y * b.y) + (a.z * b.z));
 }
 
-t_vec3	ft_vec_cross(t_vec3 a, t_vec3 b)
+t_vec3	vcross(t_vec3 a, t_vec3 b)
 {
 	t_vec3 v;
 
@@ -85,12 +117,12 @@ t_vec3	ft_vec_cross(t_vec3 a, t_vec3 b)
 	return (v);
 }
 
-double	ft_vec_size(t_vec3 a)
+double	vsize(t_vec3 a)
 {
 	return (sqrt(pow(a.x, 2.0) + pow(a.y, 2.0) + pow(a.z, 2.0)));
 }
 
-t_vec3	ft_vec_unit(t_vec3 a)
+t_vec3	vunit(t_vec3 a)
 {
 	t_vec3	v;
 	double	size;
