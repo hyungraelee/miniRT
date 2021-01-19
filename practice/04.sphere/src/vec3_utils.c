@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:07:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/19 16:12:35 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/19 12:55:19 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,37 +127,9 @@ t_vec3	vunit(t_vec3 a)
 	t_vec3	v;
 	double	size;
 
-	size = ft_vec_size(a);
+	size = vsize(a);
 	v.x = a.x / size;
 	v.y = a.y / size;
 	v.z = a.z / size;
 	return (v);
-}
-
-int	main()
-{
-	t_vec3	a;
-	t_vec3	b;
-	t_vec3	c;
-
-	a = vec3(2.0, 4.0, 3.0);
-	b = vec3(0.0, 0.0, 1.0);
-	c = vsum(a, b);
-	printf("a = %f, %f, %f\n", a.x, a.y, a.z);
-	printf("b = %f, %f, %f\n", b.x, b.y, b.z);
-	printf("c = %f, %f, %f\n", c.x, c.y, c.z);
-	c = vsub(a, b);
-	printf("c = %f, %f, %f\n", c.x, c.y, c.z);
-	c = vmul(a, 2);
-	printf("c = %f, %f, %f\n", c.x, c.y, c.z);
-	c = vdiv(a, 2);
-	printf("c = %f, %f, %f\n", c.x, c.y, c.z);
-	printf("dot = %f\n", vdot(a, b));
-	c = vcross(a, b);
-	printf("c = %f, %f, %f\n", c.x, c.y, c.z);
-	c = vunit(a);
-	printf("c = %f, %f, %f\n", c.x, c.y, c.z);
-
-
-	return (0);
 }
