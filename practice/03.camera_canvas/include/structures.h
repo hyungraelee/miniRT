@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:15:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/18 17:23:22 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/19 11:10:51 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct s_vec3 t_vec3;
 typedef struct s_vec3 t_point3;
 typedef struct s_vec3 t_color3;
+typedef struct s_ray t_ray;
 
 typedef struct s_camera t_camera;
 typedef struct s_canvas t_canvas;
@@ -26,6 +27,13 @@ struct	s_vec3
 	double	y;
 	double	z;
 };
+
+struct s_ray
+{
+	t_point3	orig;
+	t_vec3		dir;
+};
+
 
 struct s_camera
 {

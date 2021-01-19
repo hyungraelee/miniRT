@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:01:38 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/19 10:54:35 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/01/19 11:25:13 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/01/19 11:26:56 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
+#ifndef COLOR_H
+# define COLOR_H
 
-# include "utils.h"
+# include <stdio.h>
+# include "structures.h"
 
-t_canvas	canvas(int	width, int height);
-t_camera	camera(t_canvas *canvas, t_point3 orig);
+void	write_color(t_color3 pixel_color);
 
 #endif
