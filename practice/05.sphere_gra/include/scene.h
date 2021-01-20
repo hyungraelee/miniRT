@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   canvas.c                                           :+:      :+:    :+:   */
+/*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:06:56 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/20 10:19:32 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/01/18 13:01:38 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/01/19 16:50:54 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/scene.h"
+#ifndef SCENE_H
+# define SCENE_H
 
-t_canvas	canvas(int	width, int height)
-{
-	t_canvas canvas;
+# include "utils.h"
 
-	canvas.width = width;
-	canvas.height = height;
-	canvas.aspect_ratio = (double)width / (double)height;
-	return (canvas);
-}
+t_canvas	canvas(int	width, int height);
+t_camera	camera(t_canvas *canvas, t_point3 orig);
+t_sphere	sphere(t_point3 center, double radius);
+
+#endif

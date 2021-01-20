@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   canvas.c                                           :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:06:56 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/20 10:19:32 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/01/19 11:25:13 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/01/19 11:26:56 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/scene.h"
+#ifndef COLOR_H
+# define COLOR_H
 
-t_canvas	canvas(int	width, int height)
-{
-	t_canvas canvas;
+# include <stdio.h>
+# include "structures.h"
 
-	canvas.width = width;
-	canvas.height = height;
-	canvas.aspect_ratio = (double)width / (double)height;
-	return (canvas);
-}
+void	write_color(t_color3 pixel_color);
+
+#endif

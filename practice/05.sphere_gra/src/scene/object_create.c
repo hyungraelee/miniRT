@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   canvas.c                                           :+:      :+:    :+:   */
+/*   object_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:06:56 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/20 10:19:32 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/01/19 16:45:36 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/01/19 16:47:39 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/scene.h"
+#include "../../include/structures.h"
 
-t_canvas	canvas(int	width, int height)
+t_sphere	sphere(t_point3 center, double radius)
 {
-	t_canvas canvas;
+	t_sphere	sp;
 
-	canvas.width = width;
-	canvas.height = height;
-	canvas.aspect_ratio = (double)width / (double)height;
-	return (canvas);
+	sp.center = center;
+	sp.radius = radius;
+	sp.radius2 = radius * radius;
+	return (sp);
 }

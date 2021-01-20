@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   canvas.c                                           :+:      :+:    :+:   */
+/*   trace.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:06:56 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/20 10:19:32 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/01/19 11:34:45 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/01/20 14:57:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/scene.h"
+#ifndef TRACE_H
+# define TRACE_H
 
-t_canvas	canvas(int	width, int height)
-{
-	t_canvas canvas;
+# include "structures.h"
+# include "utils.h"
 
-	canvas.width = width;
-	canvas.height = height;
-	canvas.aspect_ratio = (double)width / (double)height;
-	return (canvas);
-}
+t_ray		ray(t_point3 orig, t_vec3 dir);
+t_ray		ray_primary(t_camera *cam, double u, double v);
+t_point3	ray_at(t_ray *ray, double t);
+t_color3	ray_color(t_ray	*ray, t_sphere *sphere);
+
+double		hit_sphere(t_sphere *sp, t_ray *ray);
+
+
+#endif
