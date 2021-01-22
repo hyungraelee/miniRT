@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:34:28 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/20 16:48:57 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/22 10:29:37 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_point3	ray_at(t_ray *ray, double t)
 	return (at);
 }
 
-t_color3	ray_color(t_ray	*ray, t_sphere *sphere)
+t_color3	ray_color(t_ray	*ray, t_object *world)
 {
 	double			t;
 	t_hit_record	rec;
@@ -48,7 +48,7 @@ t_color3	ray_color(t_ray	*ray, t_sphere *sphere)
 	rec.tmin = 0;
 	rec.tmax = INFINITY;
 	// 광선이 구에 적중하면(광선과 구가 교점이 있고, 교점이 카메라 앞쪽이라면)
-	if (hit_sphere(sphere, ray, &rec))
+	if (hit(world, ray, &rec))
 	{
 		return (vmul(vsum(rec.normal, color3(1, 1, 1)), 0.5));
 	}

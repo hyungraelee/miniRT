@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   object_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 13:01:38 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/22 10:26:56 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/01/22 10:16:59 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/01/22 10:35:55 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
+#include "../../include/utils.h"
 
-# include "utils.h"
+void	oadd(t_object **list, t_object *new)
+{
+	t_object	*cur;
 
-t_canvas	canvas(int	width, int height);
-t_camera	camera(t_canvas *canvas, t_point3 orig);
-t_object	*object(t_object_type type, void *element);
-t_sphere	*sphere(t_point3 center, double radius);
+	if(*list == NULL)
+	{
+		*list = new;
+		return ;
+	}
+	cur = *list;
+	while (cur->next)
+		cur = cur->next;
+	cur->next = new;
+}
 
-#endif
+t_object	*olast(t_object *list)
+{
+	if (list == NULL)
+		return (NULL);
+	while (list->next)
+		list = list->next;
+	return (list);
+}

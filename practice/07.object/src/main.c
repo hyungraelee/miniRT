@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:51:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/21 21:01:22 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/22 10:57:03 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main()
 	canv = canvas(400, 300);
 	cam = camera(&canv, point3(0, 0, 0));
 	world = object(SP, sphere(point3(0, 0, -5), 2));
+	oadd(&world, (object(SP, sphere(point3(-2, 0, -5), 2))));
 
 	printf("P3\n%d %d\n255\n", canv.width, canv.height);
 	j = canv.height - 1;
@@ -42,7 +43,7 @@ int main()
 			u = (double)i / (canv.width - 1);
 			v = (double)j / (canv.height - 1);
 			ray = ray_primary(&cam, u, v);
-			pixel_color = ray_color(&ray, &sp);
+			pixel_color = ray_color(&ray, world);
 			write_color(pixel_color);
 			i++;
 		}
