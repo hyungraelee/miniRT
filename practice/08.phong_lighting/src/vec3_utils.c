@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:07:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/20 15:16:44 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/26 17:18:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,14 @@ t_vec3	vmul(t_vec3 a, double t)
 	return (v);
 }
 
+t_vec3	vmulv(t_vec3 a, t_vec3 b)
+{
+	a.x *= b.x;
+	a.y *= b.y;
+	a.z *= b.z;
+	return (a);
+}
+
 t_vec3	vdiv(t_vec3 a, double t)
 {
 	t_vec3 v;
@@ -132,4 +140,15 @@ t_vec3	vunit(t_vec3 a)
 	v.y = a.y / size;
 	v.z = a.z / size;
 	return (v);
+}
+
+t_vec3	vmin(t_vec3 a, t_vec3 b)
+{
+	if (a.x > b.x)
+		a.x = b.x;
+	if (a.y > b.y)
+		a.y = b.y;
+	if (a.z > b.y)
+		a.z = b.z;
+	return (a);
 }

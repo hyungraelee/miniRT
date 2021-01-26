@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:34:28 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/26 14:28:37 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/26 16:13:22 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_hit_record	record_init(void)
 	t_hit_record	record;
 
 	record.tmin = EPSILON;
+	// double에서 근사치를 사용하기 때문에 약간의 보정이 필요해서?
+	// '버림'을 해버리기 떄문에 한 점에서 second ray를 쏠 때 점 내부에서 밖으로 못나올 수 있음.
 	record.tmax = INFINITY;
 	return (record);
 }
@@ -55,7 +57,7 @@ t_color3	ray_color(t_scene *scene)
 
 	scene->rec = record_init();
 	if (hit(scene->world, &scene->ray, &scene->rec))
-		return (vmul(vsum(scene->rec.normal, color3(1, 1, 1)), 0.5));
+		return (phong_lighting(scene));
 	else
 	{
 		t = 0.5 * (scene->ray.dir.y + 1.0);

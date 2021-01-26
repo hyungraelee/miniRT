@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:15:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/26 13:49:00 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/26 15:49:23 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef int					t_object_type;
 
 // 엄청 작은 값
 # define EPSILON 1e-6
+# define LUMEN 3
 
 // 공용 구조체
 struct	s_vec3
@@ -60,10 +61,11 @@ struct s_hit_record
 {
 	t_point3	p;
 	t_vec3		normal;
+	t_bool		front_face;
 	double		tmin;
 	double		tmax;
 	double		t;
-	t_bool		front_face;
+	t_color3	albedo;
 };
 
 // 장면 구조체
@@ -101,6 +103,7 @@ struct s_object
 	t_object_type	type;
 	void			*element;
 	void			*next;
+	t_color3		albedo;
 };
 
 struct s_sphere

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:51:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/26 14:22:56 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/26 15:56:09 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ t_scene		*scene_init(void)
 		return (NULL);
 	scene->canvas = canvas(400, 300);
 	scene->camera = camera(&scene->canvas, point3(0, 0, 0));
-	world = object(SP, sphere(point3(-2, 0, -5), 2));
-	oadd(&world, (object(SP, sphere(point3(2, 0, -5), 2))));
+	world = object(SP, sphere(point3(-2, 0, -5), 2), color3(0.5, 0, 0));
+	oadd(&world, object(SP, sphere(point3(2, 0, -5), 2), color3(0, 0.5, 0)));
+	oadd(&world, object(SP, sphere(point3(0, -1000, 0), 1000), color3(1, 1, 1)));
 	scene->world = world;
-	lights = object(LIGHT_POINT, light_point(point3(3, 3, 0), color3(1, 0, 0), 0.5));
+	lights = object(LIGHT_POINT, light_point(point3(0, 5, 0), color3(1, 1, 1), 0.5), color3(0, 0, 0)); // 더미 albedo
 	scene->light = lights;
 	return (scene);
 
