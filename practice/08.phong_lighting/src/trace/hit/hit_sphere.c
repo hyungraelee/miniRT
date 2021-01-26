@@ -6,23 +6,29 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:01:21 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/21 20:02:12 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/26 14:49:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/utils.h"
 #include "../../../include/trace.h"
 
-double	hit_sphere(t_sphere *sp, t_ray *ray, t_hit_record *rec)
-{
-	t_vec3	oc;
-	double	a;
-	double	half_b;
-	double	c;
-	double	discriminant; //판별식
-	double	sqrtd;
-	double	root;
 
+//hit_sphere의 첫반째 인자를 (t_sphere *) 에서 (t_object *)로 바꿔준 이유는
+//이후 텍스쳐, 회전변환등을 t_object 구조체에 추가할 것이기 때문에 미리 수정해둔 것.
+
+double	hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec)
+{
+	t_sphere	*sp;
+	t_vec3		oc;
+	double		a;
+	double		half_b;
+	double		c;
+	double		discriminant; //판별식
+	double		sqrtd;
+	double		root;
+
+	sp = sp_obj->element;
 	oc = vsub(ray->orig, sp->center);
 	a = vdot(ray->dir, ray->dir);
 	half_b = vdot(oc, ray->dir);

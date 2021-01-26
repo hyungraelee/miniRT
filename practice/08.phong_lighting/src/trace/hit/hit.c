@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 10:38:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/22 10:46:58 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/26 14:43:04 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ t_bool	hit_obj(t_object *world, t_ray *ray, t_hit_record *rec)
 
 	hit_result = FALSE;
 	if (world->type == SP)
-		hit_result = hit_sphere(world->element, ray, rec);
+		hit_result = hit_sphere(world, ray, rec);
 	return (hit_result);
 }
