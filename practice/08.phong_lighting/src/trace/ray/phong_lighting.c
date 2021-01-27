@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:15:53 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/26 22:50:17 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/27 14:39:33 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,3 +55,40 @@ t_color3	phong_lighting(t_scene *scene)
 		vec3	specular = specularStrength * spec * lightColor;
 		vec3	result = (ambient + diffuse + specular) * objectColor;
 */
+
+t_vec3		reflect(t_vec3 v, t_vec3 n)
+{
+	// v + (2 * (n * dot(-v, n)))
+	return (vsub(v, vmul(n, (vdot(v, n) * 2))));
+}
+
+t_color3	point_light_get(t_scene *scene, t_light *light)
+{
+	t_color3	ambient;
+	t_color3	diffuse;
+	t_color3	specular;
+	t_vec3		light_dir;
+	t_vec3		view_dir;
+	t_vec3		reflect_dir;
+
+	double		ka;
+	double		kd;
+	double		ks;
+	double		ksn;
+	double		spec;
+	double		brightness;
+
+	view_dir = vunit(vmul(scene->ray.dir, -1)); // primary ray 거꾸로 뒤집음.
+	light_dir = vunit(vsub(light->origin, scene->rec.p)); // primary ray 가 닿은 object의 한 점에서 광원을 바라보는 방향
+	reflect_dir = reflect(vmul(light_dir, -1), scene->rec.normal);
+	ka = 0.1; // ambient strength
+	kd = fmax(vdot(scene->rec.normal, light_dir), 0.0); // diffuse strength
+	ks = 0.5; // specular strength 이거 우리 과제에서 rt파일에 어떻게 들어오는지 체크
+	ksn = 64; // 이거 우리 과제에서 rt파일에 어떻게 들어오는지 체크
+	ambient = vmul(light->light_color, ka);
+	diffuse = vmul(light->light_color, kd);
+	spec = pow(fmax(vdot(view_dir, reflect_dir), 0.0), ksn);
+	specular = vmul(vmul(light->light_color, ks), spec);
+	brightness = light->bright_ratio * LUMEN; // 기준 광속/광량을 정의한 매크로
+	return (vmul(vsum(vsum(ambient, diffuse), specular), brightness));
+}

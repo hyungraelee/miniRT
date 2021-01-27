@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:01:21 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/26 14:49:58 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/27 14:51:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ double	hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec)
 	rec->p = ray_at(ray, root);
 	rec->normal = vdiv(vsub(rec->p, sp->center), sp->radius); // 정규화된 법선 벡터
 	set_face_normal(ray, rec); // rec의 법선벡터와 광선의 방향벡터를 비교해서 앞면인지 뒷면인지 t_bool 값으로 저장.
+	rec->albedo = sp_obj->albedo;
 	return (TRUE);
 }

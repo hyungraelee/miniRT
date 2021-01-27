@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:51:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/26 15:56:09 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/27 14:42:42 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int main()
 	t_color3	pixel_color;
 	t_scene		*scene;
 
-	scene = scenen_init();
+	scene = scene_init();
 
 	printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
 	j = scene->canvas.height - 1;
@@ -57,7 +57,7 @@ int main()
 		{
 			u = (double)i / (scene->canvas.width - 1);
 			v = (double)j / (scene->canvas.height - 1);
-			scene->ray = ray_primary(&scene>camera, u, v);
+			scene->ray = ray_primary(&scene->camera, u, v);
 			pixel_color = ray_color(scene);
 			write_color(pixel_color);
 			i++;

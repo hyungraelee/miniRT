@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:07:23 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/26 17:18:16 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/27 14:56:41 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ t_vec3	vmin(t_vec3 a, t_vec3 b)
 		a.x = b.x;
 	if (a.y > b.y)
 		a.y = b.y;
-	if (a.z > b.y)
+	if (a.z > b.z)
 		a.z = b.z;
 	return (a);
 }

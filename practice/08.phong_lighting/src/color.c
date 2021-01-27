@@ -6,11 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:17:56 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/01/19 11:27:42 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/01/27 14:41:59 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/color.h"
+#include "../include/print.h"
 
 void	write_color(t_color3 pixel_color)
 {
