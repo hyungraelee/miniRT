@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 13:19:22 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/03 13:34:23 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/03 15:14:34 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ double	hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec)
 	double	root;
 
 	pl = pl_obj->element;
-	if (vdot(pl->normal, ray->dir) == 0)
+	if (fabs(vdot(pl->normal, ray->dir)) <= EPSILON)
 		return (FALSE);
-	root = vdot(vsub(pl->center, ray->orig), pl->normal) / vdot(ray->dir, pl->normal);
+	root = vdot(vsub(pl->center, ray->orig), pl->normal) /vdot	(ray->dir, pl->normal);
 	if (root < rec->tmin || root > rec->tmax)
 		return (FALSE);
 	rec->t = root;
@@ -30,4 +30,5 @@ double	hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec)
 	set_face_normal(ray, rec);
 	rec->albedo = pl_obj->albedo;
 	return (TRUE);
+
 }
