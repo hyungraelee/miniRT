@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 16:45:36 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/04 16:27:27 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/04 18:04:53 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,23 @@ t_plane		*plane(t_point3 center, t_vec3 normal)
 	pl->center = center;
 	pl->normal = normal;
 	return (pl);
+}
+
+t_triangle	*triangle(t_point3 a, t_point3 b, t_point3 c)
+{
+	t_triangle	*tr;
+	t_vec3		ab;
+	t_vec3		ac;
+
+	if (!(tr = (t_triangle *)malloc(sizeof(t_triangle))))
+		return (NULL);
+	tr->a = a;
+	tr->b = b;
+	tr->c = c;
+	ab = vsub(b, a);
+	ac = vsub(c, a);
+	tr->normal = vcross(ab, ac);
+	return (tr);
 }
 
 t_cylinder	*cylinder(t_point3 center, t_vec3 normal, double diameter, double height)

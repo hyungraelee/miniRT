@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:15:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/04 16:28:03 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/04 18:00:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_scene		t_scene;
 typedef struct s_object		t_object;
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
+typedef struct s_triangle	t_triangle;
 typedef struct s_cylinder	t_cylinder;
 typedef struct s_light		t_light;
 
@@ -41,7 +42,8 @@ typedef int					t_object_type;
 # define SP 0
 # define LIGHT_POINT 1
 # define PL 2
-# define CY 3
+# define TR 3
+# define CY 4
 
 // 엄청 작은 값
 # define EPSILON 1e-6
@@ -120,6 +122,14 @@ struct s_sphere
 struct s_plane
 {
 	t_point3	center;
+	t_vec3		normal;
+};
+
+struct s_triangle
+{
+	t_point3	a;
+	t_point3	b;
+	t_point3	c;
 	t_vec3		normal;
 };
 

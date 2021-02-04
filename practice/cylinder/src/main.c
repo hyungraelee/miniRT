@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:51:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/04 17:53:46 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/04 18:06:18 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_scene		*scene_init(void)
 	oadd(&world, object(PL, plane(point3(-30, 0, 0), vec3(1, 0, 0)), color3(1, 0, 0)));
 	oadd(&world, object(PL, plane(point3(0, 0, -20), vec3(0, 0, 1)), color3(1, 1, 1)));
 	oadd(&world, object(PL, plane(point3(0, 21, 0), vec3(0, 1, 0)), color3(0.2, 0.2, 0.2)));
+	oadd(&world, object(TR, triangle(point3(-2, 0, -5), point3(2, 0, 4), point3(0, 2, -3)), color3(0.5, 0.5, 0.5)));
 	oadd(&world, object(CY, cylinder(point3(3, 0, -7), vec3(0, 1, 0), 5.0, 3.0), color3(0.9, 0, 0.4)));
 	oadd(&world, object(SP, sphere(point3(2, 0, -5), 2), color3(0, 0.5, 0)));
 	scene->world = world;

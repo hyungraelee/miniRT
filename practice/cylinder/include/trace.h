@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:34:45 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/04 16:39:02 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/04 18:04:09 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_bool	hit(t_object *world, t_ray *ray, t_hit_record *rec);
 t_bool	hit_obj(t_object *world, t_ray *ray, t_hit_record *rec);
 t_bool		hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec);
 t_bool		hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec);
+t_bool		hit_triangle(t_object *tr_obj, t_ray *ray, t_hit_record *rec);
 t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec);
 void		set_face_normal(t_ray *r, t_hit_record *rec);
 
