@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 16:37:27 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/04 17:51:41 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/05 15:35:47 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
 	rec->p = ray_at(ray, root);
 	axis = cy->center;
 	axis.y = rec->p.y;
+	if (axis.y - cy->center.y > cy->height || axis.y < cy->center.y)
+		return (FALSE);
 	rec->normal = vdiv(vsub(rec->p, axis), cy->radius);
 	set_face_normal(ray, rec);
 	rec->albedo = cy_obj->albedo;
