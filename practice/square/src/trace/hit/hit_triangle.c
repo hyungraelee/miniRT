@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:36:24 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/10 11:53:06 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/11 13:11:28 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_bool	hit_triangle(t_object *tr_obj, t_ray *ray, t_hit_record *rec)
 		return (FALSE);
 	d = vdot(tr->normal, tr->a) * (-1);
 	root = (-1) * (vdot(tr->normal, ray->orig) + d) / vdot(tr->normal, ray->dir);
+	//
 	if (root < rec->tmin || root > rec->tmax)
 		return (FALSE);
 	p = ray_at(ray, root);

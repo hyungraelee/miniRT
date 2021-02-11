@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 13:19:22 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/10 11:51:09 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/11 13:09:40 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_bool	hit_plane(t_object *pl_obj, t_ray *ray, t_hit_record *rec)
 	if (fabs(vdot(pl->normal, ray->dir)) <= EPSILON)
 		return (FALSE);
 	root = vdot(vsub(pl->center, ray->orig), pl->normal) / vdot(ray->dir, pl->normal);
+	//
 	if (root < rec->tmin || root > rec->tmax)
 		return (FALSE);
 	rec->t = root;
