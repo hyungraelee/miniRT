@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:15:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/10 14:39:03 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/11 16:50:04 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,6 @@ struct s_square
 	double		length;
 	t_vec3		vertex;
 };
-
-
 
 struct s_light
 {
