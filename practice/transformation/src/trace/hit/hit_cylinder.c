@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 16:37:27 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/11 15:07:14 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/20 16:44:50 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_bool	hit_cylinder(t_object *cy_obj, t_ray *ray, t_hit_record *rec)
 	double		h_range;	//실런더 center로부터 실린더 교점 p의 높이
 
 	cy = cy_obj->element;
+	cy->radius = cy->diameter / 2;
+	cy->radius2 = pow(cy->radius, 2);
 	h_unit = vunit(cy->normal);
 	h = vsum(cy->center, vmul(h_unit, cy->height));
 	co = vsub(ray->orig, cy->center);

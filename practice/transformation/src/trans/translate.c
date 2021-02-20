@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:10:06 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/19 18:35:23 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/20 16:13:17 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,30 +37,30 @@ void	translate_sp(t_object *obj, int axis, int sign)
 	}
 }
 
-// void	translate_pl(t_object *obj, int axis, int sign)
-// {
-// 	t_plane *pl;
+void	translate_pl(t_object *obj, int axis, int sign)
+{
+	t_plane *pl;
 
-// 	pl = obj->element;
-// 	if (sign == PLUS)
-// 	{
-// 		if (axis == X)
-// 			pl->center.x++;
-// 		else if (axis == Y)
-// 			pl->center.y++;
-// 		else if (axis == Z)
-// 			pl->center.z++;
-// 	}
-// 	else if (sign == MINUS)
-// 	{
-// 		if (axis == X)
-// 			pl->center.x--;
-// 		else if (axis == Y)
-// 			pl->center.y--;
-// 		else if (axis == Z)
-// 			pl->center.z--;
-// 	}
-// }
+	pl = obj->element;
+	if (sign == PLUS)
+	{
+		if (axis == X)
+			pl->center.x++;
+		else if (axis == Y)
+			pl->center.y++;
+		else if (axis == Z)
+			pl->center.z++;
+	}
+	else if (sign == MINUS)
+	{
+		if (axis == X)
+			pl->center.x--;
+		else if (axis == Y)
+			pl->center.y--;
+		else if (axis == Z)
+			pl->center.z--;
+	}
+}
 
 void	translate_cy(t_object *obj, int axis, int sign)
 {
@@ -165,8 +165,8 @@ void	translate(t_object *obj, int axis, int sign)
 {
 	if (obj->type == SP)
 		translate_sp(obj, axis, sign);
-	// else if (obj->type == PL)
-	// 	translate_pl(obj, axis, sign);
+	else if (obj->type == PL)
+		translate_pl(obj, axis, sign);
 	else if (obj->type == TR)
 		translate_tr(obj, axis, sign);
 	else if (obj->type == CY)

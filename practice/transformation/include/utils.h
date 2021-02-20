@@ -6,15 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:16:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/19 17:15:27 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/20 17:46:53 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
 
-# define _USE_MATH_DEFINES
-# include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include "structures.h"

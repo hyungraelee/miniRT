@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 18:07:34 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/19 18:41:10 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/20 16:43:37 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	scale_sp(t_object *obj, int sign)
 
 	sp = obj->element;
 	if (sign == PLUS)
-		sp->radius++;
+		sp->diameter++;
 	else if (sign == MINUS)
-		sp->radius--;
+		sp->diameter--;
 }
 
 // void	scale_pl(t_object *obj, int sign)
@@ -37,18 +37,15 @@ void	scale_sp(t_object *obj, int sign)
 void	scale_cy(t_object *obj, int sign)
 {
 	t_cylinder	*cy;
+	double		aspect_ratio;
 
 	cy = obj->element;
+	aspect_ratio = cy->diameter / cy->height;
 	if (sign == PLUS)
-	{
 		cy->diameter++;
-		cy->height++;
-	}
 	else if (sign == MINUS)
-	{
 		cy->diameter--;
-		cy->height--;
-	}
+	cy->height = cy->diameter / aspect_ratio;
 }
 
 void	scale_sq(t_object *obj, int sign)

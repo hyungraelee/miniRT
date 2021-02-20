@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 16:45:36 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/10 14:39:00 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/20 18:34:24 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,14 @@ t_object	*object(t_object_type type, void *element, t_color3 albedo)
 	return (new);
 }
 
-t_sphere	*sphere(t_point3 center, double radius)
+t_sphere	*sphere(t_point3 center, double diameter)
 {
 	t_sphere	*sp;
 
 	if (!(sp = (t_sphere *)malloc(sizeof(t_sphere))))
 		return (NULL);
 	sp->center = center;
-	sp->radius = radius;
-	sp->radius2 = radius * radius;
+	sp->diameter = diameter;
 	return (sp);
 }
 
@@ -75,8 +74,6 @@ t_cylinder	*cylinder(t_point3 center, t_vec3 normal, double diameter, double hei
 	cy->center = center;
 	cy->normal = normal;
 	cy->diameter = diameter;
-	cy->radius = diameter / 2;
-	cy->radius2 = cy->radius * cy->radius;
 	cy->height = height;
 	return (cy);
 }

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:01:21 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/04 16:39:22 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/20 16:37:38 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_bool	hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec)
 	double		root;
 
 	sp = sp_obj->element;
+	sp->radius = sp->diameter / 2;
+	sp->radius2 = pow(sp->radius, 2);
 	oc = vsub(ray->orig, sp->center);
 	a = vdot(ray->dir, ray->dir);
 	half_b = vdot(oc, ray->dir);

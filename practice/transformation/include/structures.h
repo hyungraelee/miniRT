@@ -6,12 +6,15 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:15:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/19 18:23:45 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/20 17:51:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
+
+# define _USE_MATH_DEFINES
+# include <math.h>
 
 // 1. 공용 구조체
 typedef struct s_vec3		t_vec3;
@@ -45,6 +48,7 @@ typedef int					t_bool;
 # define Z 3
 # define PLUS 4
 # define MINUS 5
+# define THETA (M_PI / (double)18)
 
 typedef int					t_object_type;
 # define SP 0
@@ -124,6 +128,7 @@ struct s_object
 struct s_sphere
 {
 	t_point3	center;
+	double		diameter;
 	double		radius;
 	double		radius2;
 };
