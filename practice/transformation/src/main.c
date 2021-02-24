@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:51:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/20 18:30:52 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/24 18:51:18 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ t_scene		*scene_init(void)
 	//추후 NULL?�� ?��?�� ?��?��?�� ?��?�� 처리�? ?��?��.
 	if (!(scene = (t_scene *)malloc(sizeof(t_scene))))
 		return (NULL);
-	scene->canvas = canvas(1920, 1080);
+	scene->canvas = canvas(700, 700);
 	scene->camera = camera(&scene->canvas, point3(0, 2, 15));
-	// world = object(SP, sphere(point3(-2, 2, -5), 2), color3(0.5, 0, 0));
+	world = object(SP, sphere(point3(-2, 2, -5), 2), color3(0.5, 0, 0));
 	// world = object(CY, cylinder(point3(6, -3, -7), vec3(0, 1, 0), 5.0, 6.0), color3(0.9, 0, 0.4));
-	world = object(SQ, square(point3(-10, 2, -2), vec3(0, 1, 0), 4), color3(0.4, 1, 0.4));
+	// world = object(SQ, square(point3(-10, 2, -2), vec3(0, 1, 0), 4), color3(0.4, 1, 0.4));
 	// world = object(PL, plane(point3(0, -20, 0), vec3(0, 1, 0)), color3(0, 1, 0));
 	// oadd(&world, object(SP, sphere(point3(0, -1000, 0), 995), color3(1, 1, 1)));
 	oadd(&world, object(PL, plane(point3(0, -20, 0), vec3(0, 1, 0)), color3(0, 1, 0)));
@@ -60,14 +60,18 @@ int main()
 	t_scene		*scene;
 
 	scene = scene_init();
-	// translate(scene->world, X, PLUS);
+	// translate(scene->world, Y, PLUS);
+	// translate(scene->world, Y, PLUS);
+	// translate(scene->world, Y, PLUS);
+	// translate(scene->world, Y, PLUS);
+	// translate(scene->world, Y, PLUS);
 	// scale(scene->world, PLUS);
 	// scale(scene->world, PLUS);
 	// scale(scene->world, PLUS);
 	// scale(scene->world, PLUS);
 	// scale(scene->world, PLUS);
 	// rotate(scene->world, X, PLUS);
-	rotate(scene->world, X, PLUS);
+	// rotate(scene->world, X, PLUS);
 	printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
 	j = scene->canvas.height - 1;
 	while (j >= 0)

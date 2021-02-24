@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 11:45:30 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/11 13:57:36 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/24 21:31:05 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ t_bool	hit_square(t_object *sq_obj, t_ray *ray, t_hit_record *rec)
 	t_square	*sq;
 	double		root;
 	t_point3	p;
-	t_point3	left_bottom;
-	t_point3	right_top;
-	t_point3	lb;
-	t_point3	rt;
+	// double		a;
+	// double		b;
+	// double		c;
+	double		gradient;
+	double		theta;
+	t_point3	sq_p1;
+	t_point3	sq_p2;
 
 	sq = sq_obj->element;
 	if (fabs(vdot(sq->normal, ray->dir)) <= EPSILON)
@@ -32,25 +35,51 @@ t_bool	hit_square(t_object *sq_obj, t_ray *ray, t_hit_record *rec)
 	if (root < rec->tmin || root > rec->tmax)
 		return (FALSE);
 	p = ray_at(ray, root);
-	left_bottom = vsub(sq->center, vmul(sq->vertex, sq->length / 2));
-	right_top = vsum(sq->center, vmul(sq->vertex, sq->length / 2));
-	/*
-		p값이 계속 바뀌면서 생기는 오차를 없애기 위한 보정치
-		점 p가
-		left_bottom보다 확실히 작으면,
-		right_top보다 확실히 크면
-		사각형 안에 들어오지 않는다는 느낌으로 이해.
-	*/
-	lb.x = left_bottom.x - EPSILON;
-	lb.y = left_bottom.y - EPSILON;
-	lb.z = left_bottom.z - EPSILON;
-	rt.x = right_top.x + EPSILON;
-	rt.y = right_top.y + EPSILON;
-	rt.z = right_top.z + EPSILON;
-	if (p.x < lb.x || p.y < lb.y || p.z < lb.z)
-		return (FALSE);
-	else if (p.x > rt.x || p.y > rt.y || p.z > rt.z)
-		return (FALSE);
+	// center와 normal이 만드는 평면에서 center의 z좌표와 같은 z값을 갖는 다른 두 점을 구한다.
+
+
+	// c = sq->normal.x / sq->normal.y;
+	// a = 1 + pow(c, 2);
+	// b = sq->center.x;
+	// sq_p1.x = b + sqrt(a * sq->length * sq->length) / (2 * a);
+	// sq_p1.y = (-1) * c * sqrt(sq->length * sq->length * a) / (2 * a) + sq->center.y;
+	// sq_p1.z = sq->center.z;
+
+	// sq_p2.x = b - sqrt(a * sq->length * sq->length) / (2 * a);
+	// sq_p2.y = c * sqrt(sq->length * sq->length * a) / (2 * a) + sq->center.y;
+	// sq_p2.z = sq->center.z;
+	gradient = -sq->normal.x / sq->normal.y;
+	theta = atan(gradient);
+	sq_p1.x = sq->center.x + cos(theta) * (cos(M_PI / 4) * sq->length);
+	sq_p1.y = sq->center.y + sin(theta) * (cos(M_PI / 4) * sq->length);
+	sq_p1.z = sq->center.z;
+	sq_p2.x = sq->center.x - cos(theta) * (cos(M_PI / 4) * sq->length);
+	sq_p2.y = sq->center.y + sin(theta) * (cos(M_PI / 4) * sq->length);
+	sq_p2.z = sq->center.z;
+
+	if (sq_p1.x < sq_p2.x)
+	{
+		if (p.x < (sq_p1.x - EPSILON) || p.x > (sq_p2.x + EPSILON))
+			return (FALSE);
+	}
+	else if (sq_p1.x > sq_p2.x)
+	{
+		if (p.x > (sq_p1.x + EPSILON) || p.x < (sq_p2.x - EPSILON))
+			return (FALSE);
+	}
+
+	if (sq_p1.y < sq_p2.y)
+	{
+		if (p.y < (sq_p1.y - EPSILON) || p.y > (sq_p2.y + EPSILON))
+			return (FALSE);
+	}
+	else if (sq_p1.y > sq_p2.y)
+	{
+		if (p.y > (sq_p1.y + EPSILON) || p.y < (sq_p2.y - EPSILON))
+			return (FALSE);
+	}
+
+	// if (sq_p1.z < sq_)
 	rec->t = root;
 	rec->p = p;
 	rec->normal = sq->normal;

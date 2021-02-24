@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 16:45:36 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/20 18:34:24 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/24 20:21:54 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,6 @@ t_square	*square(t_point3 center, t_vec3 normal, double length)
 		return (NULL);
 	sq->center = center;
 	sq->normal = vunit(normal);
-	if (fabs(sq->normal.x) == 1 && sq->normal.y == 0 && sq->normal.z == 0)
-		sq->vertex = vec3(0, 1, 1);
-	else if (sq->normal.x == 0 && fabs(sq->normal.y) == 1 && sq->normal.z == 0)
-		sq->vertex = vec3(1, 0, 1);
-	else if (sq->normal.x == 0 && sq->normal.y == 0 && fabs(sq->normal.z) == 1)
-		sq->vertex = vec3(1, 1, 0);
-	else
-		return (NULL); // 나중에 리턴 다시 제대로 체크하기.
-	// 올바른 법선이 아닌 경우 해당 square만 넘기면 되는데 NULL로 인해서 프로그램이 종료되지 않도록.
 	sq->length = length;
 	return (sq);
 }
