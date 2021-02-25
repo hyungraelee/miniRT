@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 11:45:30 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/25 18:26:12 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/25 23:31:11 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ t_bool	hit_square(t_object *sq_obj, t_ray *ray, t_hit_record *rec)
 	t_square	*sq;
 	double		root;
 	t_point3	p;
-	// double		a;
-	// double		b;
-	// double		c;
+	double		distance;
+	double		ch;
+	double		ph;
 	double		gradient;
 	double		theta;
 	t_point3	sq_p1;
@@ -40,7 +40,6 @@ t_bool	hit_square(t_object *sq_obj, t_ray *ray, t_hit_record *rec)
 	/*
 	center와 normal이 만드는 평면에서 center의 z좌표와 같은 z값을 갖는 다른 두 점을 구한다.
 	z = center.z 인 평면으로 위의 평면을 자른다는 개념.
-	그럼
 	*/
 	gradient = -sq->normal.x / sq->normal.y;
 	theta = atan(gradient);
@@ -87,37 +86,52 @@ t_bool	hit_square(t_object *sq_obj, t_ray *ray, t_hit_record *rec)
 		}
 	}
 
-	if (sq_p1.x > sq_p2.x + EPSILON)
-	{
-		if (p.x > (sq_p1.x + EPSILON) || p.x < (sq_p2.x - EPSILON))
-			return (FALSE);
-	}
-	else if (sq_p1.x + EPSILON < sq_p2.x)
-	{
-		if (p.x < (sq_p1.x - EPSILON) || p.x > (sq_p2.x + EPSILON))
-			return (FALSE);
-	}
-	else if (fabs(sq_p1.x - sq_p2.x) > EPSILON)
-	{
-		if (p.x < (sq_p1.x - EPSILON) || p.x > (sq_p1.x + EPSILON))
-			return (FALSE);
-	}
+	/*
+		ray와 square가 만드는 평면의 교점 p와
+		sq_p1, center을 지나는 직선과의 거리를 distance라 하고,
+		점 p에서 위의 직선에 내린 수선의 발을 h라고 함.
+		ch는 center~h 거리,
+		ph는 sq_p1~h 거리.
+		ph == distance 인 경우 사각형의 경계이다.
+	*/
 
-	if (sq_p1.y > sq_p2.y + EPSILON)
-	{
-		if (p.y > (sq_p1.y + EPSILON) || p.y < (sq_p2.y - EPSILON))
-			return (FALSE);
-	}
-	else if (sq_p1.y + EPSILON < sq_p2.y)
-	{
-		if (p.y < (sq_p1.y - EPSILON) || p.y > (sq_p2.y + EPSILON))
-			return (FALSE);
-	}
-	else if (fabs(sq_p1.y - sq_p2.y) < EPSILON)
-	{
-		if (p.y < (sq_p1.y - EPSILON) || p.y > (sq_p1.y + EPSILON))
-			return (FALSE);
-	}
+	// 점과 직선의 거리 외적 성질 사용.
+	distance = vsize(vcross(vsub(p, sq_p1), vsub(sq->center, sq_p1))) / vsize(vsub(sq->center, sq_p1));
+	ch = sqrt(pow((vsize(vsub(sq->center, p))), 2) - pow(distance, 2));
+	ph = ((sqrt(2) / 2) * sq->length) - ch;
+	if (distance > ph)
+		return (FALSE);
+	// if (sq_p1.x > sq_p2.x + EPSILON)
+	// {
+	// 	if (p.x > (sq_p1.x + EPSILON) || p.x < (sq_p2.x - EPSILON))
+	// 		return (FALSE);
+	// }
+	// else if (sq_p1.x + EPSILON < sq_p2.x)
+	// {
+	// 	if (p.x < (sq_p1.x - EPSILON) || p.x > (sq_p2.x + EPSILON))
+	// 		return (FALSE);
+	// }
+	// else if (fabs(sq_p1.x - sq_p2.x) > EPSILON)
+	// {
+	// 	if (p.x < (sq_p1.x - EPSILON) || p.x > (sq_p1.x + EPSILON))
+	// 		return (FALSE);
+	// }
+
+	// if (sq_p1.y > sq_p2.y + EPSILON)
+	// {
+	// 	if (p.y > (sq_p1.y + EPSILON) || p.y < (sq_p2.y - EPSILON))
+	// 		return (FALSE);
+	// }
+	// else if (sq_p1.y + EPSILON < sq_p2.y)
+	// {
+	// 	if (p.y < (sq_p1.y - EPSILON) || p.y > (sq_p2.y + EPSILON))
+	// 		return (FALSE);
+	// }
+	// else if (fabs(sq_p1.y - sq_p2.y) < EPSILON)
+	// {
+	// 	if (p.y < (sq_p1.y - EPSILON) || p.y > (sq_p1.y + EPSILON))
+	// 		return (FALSE);
+	// }
 
 	rec->t = root;
 	rec->p = p;
