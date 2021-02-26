@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:30:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/20 18:02:40 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:51:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../include/trans.h"
 
-t_vec3	rotate_x(t_vec3	normal, int sign)
+t_vec3	rotate_z(t_vec3	normal, int sign)
 {
 	t_vec3	result;
 
@@ -30,7 +30,7 @@ t_vec3	rotate_x(t_vec3	normal, int sign)
 	return (result);
 }
 
-t_vec3	rotate_y(t_vec3 normal, int sign)
+t_vec3	rotate_x(t_vec3 normal, int sign)
 {
 	t_vec3	result;
 
@@ -49,19 +49,19 @@ t_vec3	rotate_y(t_vec3 normal, int sign)
 	return (result);
 }
 
-t_vec3	rotate_z(t_vec3 normal, int sign)
+t_vec3	rotate_y(t_vec3 normal, int sign)
 {
 	t_vec3	result;
 
 	if (sign == PLUS)
 	{
-		result.x = normal.z * cos(THETA) - normal.x * sin(THETA);
-		result.z = normal.z * sin(THETA) + normal.x * cos(THETA);
+		result.z = normal.z * cos(THETA) - normal.x * sin(THETA);
+		result.x = normal.z * sin(THETA) + normal.x * cos(THETA);
 	}
 	else if (sign == MINUS)
 	{
-		result.x = normal.z * cos(-THETA) - normal.x * sin(-THETA);
-		result.z = normal.z * sin(-THETA) + normal.x * cos(-THETA);
+		result.z = normal.z * cos(-THETA) - normal.x * sin(-THETA);
+		result.x = normal.z * sin(-THETA) + normal.x * cos(-THETA);
 	}
 	result.y = normal.y;
 	return (result);
