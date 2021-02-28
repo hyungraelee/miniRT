@@ -6,16 +6,12 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:51:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/28 14:56:35 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/28 17:54:25 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "../include/utils.h"
-#include "../include/scene.h"
-#include "../include/trace.h"
-#include "../include/print.h"
-#include "../include/trans.h"
+#include "minirt.h"
 #include "../lib/mlx/mlx.h"
 
 t_scene		*scene_init(void)
@@ -51,57 +47,53 @@ t_scene		*scene_init(void)
 	return (scene);
 }
 
-int		create_rgb(t_color3 *color)
+int             close(int keycode, t_vars *vars)
 {
-	int r;
-	int g;
-	int b;
-
-	r = (int)(255.999 * color->x);
-	g = (int)(255.999 * color->y);
-	b = (int)(255.999 * color->z);
-	return (0 << 24 | r << 16 | g << 8 | b);
+    mlx_destroy_window(vars->mlx, vars->win);
 }
+
+
 
 int main()
 {
-	int			i;
-	int			j;
-	double		u;
-	double		v;
-	t_color3	pixel_color;
+	// int			i;
+	// int			j;
+	// double		u;
+	// double		v;
+	// t_color3	pixel_color;
 	t_scene		*scene;
-	void		*mlx;
-	void		*mlx_win;
 	t_data		img;
-	int			mlx_color;
+	// int			mlx_color;
+	t_vars		vars;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "MLX_PRACTICE");
-	img.img = mlx_new_image(mlx, 1500, 900);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "MLX_PRACTICE");
+	img.img = mlx_new_image(vars.mlx, 1500, 900);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
 
 	scene = scene_init();
 	printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
-	j = scene->canvas.height - 1;
-	while (j >= 0)
-	{
-		i = 0;
-		while (i < scene->canvas.width)
-		{
-			u = (double)i / (scene->canvas.width - 1);
-			v = (double)j / (scene->canvas.height - 1);
-			scene->ray = ray_primary(&scene->camera, u, v);
-			pixel_color = ray_color(scene);
-			// write_color(pixel_color);
-			mlx_color = create_rgb(&pixel_color);
-			my_mlx_pixel_put(&img, i, scene->canvas.height - j - 1, mlx_color);
-			i++;
-		}
-		j--;
-	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	rendering(scene, &img, &vars);
+	// j = scene->canvas.height - 1;
+	// while (j >= 0)
+	// {
+	// 	i = 0;
+	// 	while (i < scene->canvas.width)
+	// 	{
+	// 		u = (double)i / (scene->canvas.width - 1);
+	// 		v = (double)j / (scene->canvas.height - 1);
+	// 		scene->ray = ray_primary(&scene->camera, u, v);
+	// 		pixel_color = ray_color(scene);
+	// 		// write_color(pixel_color);
+	// 		mlx_color = create_rgb(&pixel_color);
+	// 		my_mlx_pixel_put(&img, i, scene->canvas.height - j - 1, mlx_color);
+	// 		i++;
+	// 	}
+	// 	j--;
+	// }
+	// mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
+	mlx_loop(vars.mlx);
 	return (0);
 }

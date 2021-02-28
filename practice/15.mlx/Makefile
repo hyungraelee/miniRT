@@ -9,7 +9,7 @@ $(NAME) : $(MLX_DIR)/$(MLX)
 	install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) $(NAME)
 
 $(MLX_DIR)/$(MLX) :
-	make -C $(MLX_DIR)
+	$(MAKE) -C $(MLX_DIR)
 
 clean :
 	rm -rf $(NAME) result.ppm

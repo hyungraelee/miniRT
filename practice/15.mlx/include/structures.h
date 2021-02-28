@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:15:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/28 14:21:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/02/28 17:42:26 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_square		t_square;
 typedef struct s_light		t_light;
 
 typedef struct s_data		t_data;
-
+typedef struct s_vars		t_vars;
 // 4. ?ãùÎ≥ÑÏûê Îß§ÌÅ¨Î°?
 typedef int					t_bool;
 # define FALSE 0
@@ -176,7 +176,10 @@ struct s_light
 
 // Î≥??ôò Íµ¨Ï°∞Ï≤?
 
-
+struct  s_vars {
+        void    *mlx;
+        void    *win;
+};
 
 struct s_data {
 	void	*img;
