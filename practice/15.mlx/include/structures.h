@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:15:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/28 17:42:26 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/01 15:33:24 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,8 @@ struct s_light
 struct  s_vars {
         void    *mlx;
         void    *win;
+		t_scene	*scene;
+		t_data	*img;
 };
 
 struct s_data {

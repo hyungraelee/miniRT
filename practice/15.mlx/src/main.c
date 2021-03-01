@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:51:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/02/28 17:54:25 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/01 15:41:26 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_scene		*scene_init(void)
 		return (NULL);
 	scene->canvas = canvas(1500, 900);
 	scene->camera = camera(&scene->canvas, point3(0, 2, 15));
-	// world = object(SP, sphere(point3(-2, 2, -5), 2), color3(0.5, 0, 0));
+	world = object(SP, sphere(point3(-2, 2, -5), 2), color3(0.5, 0, 0));
 	// world = object(CY, cylinder(point3(6, -3, -7), vec3(0, 1, 0), 5.0, 6.0), color3(0.9, 0, 0.4));
-	world = object(SQ, square(point3(-10, 2, -2), vec3(0, 0, 1), 4), color3(0.4, 1, 0.4));
+	// world = object(SQ, square(point3(-10, 2, -2), vec3(0, 0, 1), 4), color3(0.4, 1, 0.4));
 	// world = object(PL, plane(point3(0, -20, 0), vec3(0, 1, 0)), color3(0, 1, 0));
 	// oadd(&world, object(SP, sphere(point3(0, -1000, 0), 995), color3(1, 1, 1)));
 	oadd(&world, object(PL, plane(point3(0, -20, 0), vec3(0, 1, 0)), color3(0, 1, 0)));
@@ -47,12 +47,15 @@ t_scene		*scene_init(void)
 	return (scene);
 }
 
-int             close(int keycode, t_vars *vars)
-{
-    mlx_destroy_window(vars->mlx, vars->win);
-}
+// int		close(int keycode, t_vars *vars)
+// {
+// 	mlx_destroy_window(vars->mlx, vars->win);
+// }
 
-
+// int		write_keycode(int keycode, t_vars *vars)
+// {
+// 	printf("keycode = %d\n", keycode);
+// }
 
 int main()
 {
@@ -73,7 +76,7 @@ int main()
 
 
 	scene = scene_init();
-	printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
+	// printf("P3\n%d %d\n255\n", scene->canvas.width, scene->canvas.height);
 	rendering(scene, &img, &vars);
 	// j = scene->canvas.height - 1;
 	// while (j >= 0)
@@ -93,7 +96,10 @@ int main()
 	// 	j--;
 	// }
 	// mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
+	vars.scene = scene;
+	vars.img = &img;
+	handle_hook(&vars);
+	// mlx_hook(vars.win, 2, 1L<<0, write_keycode, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

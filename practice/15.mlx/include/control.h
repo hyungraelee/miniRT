@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   control.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/28 17:36:15 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/01 15:36:34 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/01 14:59:58 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/01 15:26:57 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef CONTROL_H
+# define CONTROL_H
 
-# include "print.h"
-# include "scene.h"
-# include "structures.h"
 # include "utils.h"
-# include "trace.h"
-# include "trans.h"
-# include "key_macos.h"
-# include "control.h"
-# include "mlx.h"
+
+void	handle_hook(t_vars *vars);
+int		handle_keypress(int keycode, t_vars *vars);
 
 #endif
