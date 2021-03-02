@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/09 15:38:33 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/09 21:04:23 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_scene	*scene;
+	void *mem;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	if (!(mem = malloc(size * nmemb)))
+		return (0);
+	ft_memset(mem, 0, size * nmemb);
+	return (mem);
 }

@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/13 20:00:08 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/14 15:03:54 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_scene	*scene;
-
-	parse_rt(argv[1], scene);
-	return (0);
+	new->next = *lst;
+	*lst = new;
 }

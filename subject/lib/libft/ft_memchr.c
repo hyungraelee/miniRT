@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/09/28 15:56:18 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/10 01:29:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	t_scene	*scene;
+	unsigned char *sp;
 
-	parse_rt(argv[1], scene);
+	sp = (unsigned char *)s;
+	while (n-- > 0)
+	{
+		if (*sp == (unsigned char)c)
+		{
+			return (sp);
+		}
+		sp++;
+	}
 	return (0);
 }

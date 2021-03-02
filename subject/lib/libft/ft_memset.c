@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/09/28 16:27:26 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/09/28 16:27:26 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+void	*ft_memset(void *dest, int c, size_t n)
 {
-	t_scene	*scene;
+	unsigned char	*dp;
+	size_t			i;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	dp = dest;
+	i = 0;
+	while (i++ < n)
+		*dp++ = c;
+	return (dest);
 }

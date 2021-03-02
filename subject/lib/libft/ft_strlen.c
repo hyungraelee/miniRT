@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/09/28 16:57:01 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/09/28 16:57:01 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+size_t	ft_strlen(const char *s)
 {
-	t_scene	*scene;
+	size_t cnt;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	cnt = 0;
+	while (*s++)
+	{
+		cnt++;
+	}
+	return (cnt);
 }

@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/09/28 16:20:31 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/09 21:22:02 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	t_scene	*scene;
+	unsigned char	*dp;
+	unsigned char	*sp;
+	size_t			i;
 
-	parse_rt(argv[1], scene);
+	if (!dest && !src)
+		return (0);
+	dp = (unsigned char *)dest;
+	sp = (unsigned char *)src;
+	i = 0;
+	while (i++ < n)
+	{
+		if (*sp == (unsigned char)c)
+		{
+			*dp++ = *sp;
+			return (dp);
+		}
+		*dp++ = *sp++;
+	}
 	return (0);
 }

@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/02 15:27:55 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/02 15:29:01 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include <stdio.h>
 
-int main(int	argc, char	*argv[])
+t_canvas	canvas(int	width, int height)
 {
-	t_scene	*scene;
+	t_canvas canvas;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	canvas.width = width;
+	canvas.height = height;
+	canvas.aspect_ratio = (double)width / (double)height;
+	return (canvas);
 }

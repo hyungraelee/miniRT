@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/09 16:30:40 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/09 18:52:10 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+char	*ft_strdup(const char *s)
 {
-	t_scene	*scene;
+	char	*result;
+	char	*temp;
+	size_t	len;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	len = ft_strlen(s);
+	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
+		return (0);
+	temp = result;
+	while (len--)
+		*temp++ = *s++;
+	*temp = '\0';
+	return (result);
 }

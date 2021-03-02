@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/05 21:50:38 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/10 01:38:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+char	*ft_strrchr(const char *s, int c)
 {
-	t_scene	*scene;
+	char	*last;
+	size_t	len;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	last = 0;
+	len = ft_strlen(s);
+	if (c == '\0')
+		return ((char *)(s + len));
+	while (*s)
+	{
+		if (*s == (char)c)
+		{
+			last = (char *)s;
+		}
+		s++;
+	}
+	return (last);
 }

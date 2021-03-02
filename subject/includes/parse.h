@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/02 16:12:51 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/02 17:49:00 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#ifndef PARSE_H
+# define PARSE_H
 
-int main(int	argc, char	*argv[])
-{
-	t_scene	*scene;
+# include "minirt.h"
 
-	parse_rt(argv[1], scene);
-	return (0);
-}
+int	parse_rt(char	*argv, t_scene *scene);
+int	handle_info(char **info, t_scene *scene);
+int	info_r(char	**info, t_scene *scene);
+int	info_c(char **info, t_scene *scene);
+
+int	ft_isright_info(char c);
+int	check_info_err(char **info);
+
+#endif

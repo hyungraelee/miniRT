@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/14 14:36:42 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/14 14:39:47 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_scene	*scene;
+	t_list *last;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	if (!lst)
+		return (0);
+	while (lst)
+	{
+		last = lst;
+		lst = lst->next;
+	}
+	return (last);
 }

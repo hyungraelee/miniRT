@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/10 05:26:54 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/14 19:16:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	t_scene	*scene;
+	char	*str;
+	int		start;
+	int		end;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	if (!s1 || !set)
+		return (0);
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (end >= 0 && ft_strchr(set, s1[end]))
+		end--;
+	if (start >= end)
+		return (ft_strdup(""));
+	str = ft_substr(s1, start, end - start + 1);
+	return (str);
 }

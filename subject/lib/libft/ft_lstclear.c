@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/14 15:46:20 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/14 23:01:39 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_scene	*scene;
+	t_list *temp;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	while (*lst)
+	{
+		temp = *lst;
+		del(temp->content);
+		*lst = temp->next;
+		free(temp);
+	}
+	*lst = 0;
 }

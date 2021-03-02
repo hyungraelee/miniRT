@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 16:14:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2020/10/13 16:58:36 by hyunlee           #+#    #+#             */
+/*   Updated: 2020/10/13 18:14:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include <stdio.h>
+#include "libft.h"
 
-int main(int	argc, char	*argv[])
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_scene	*scene;
+	char	*result;
+	size_t	size;
+	size_t	i;
 
-	parse_rt(argv[1], scene);
-	return (0);
+	if (!s)
+		return (0);
+	size = ft_strlen(s);
+	if (!(result = (char *)malloc(sizeof(char) * (size + 1))))
+		return (0);
+	i = 0;
+	while (i < size)
+	{
+		result[i] = f(i, s[i]);
+		i++;
+	}
+	result[size] = '\0';
+	return (result);
 }
