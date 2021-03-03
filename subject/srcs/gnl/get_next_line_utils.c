@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 16:44:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2020/12/13 14:10:17 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/03 18:31:38 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_gnl(const char *s, int c)
 {
 	while (*s != c)
 	{
@@ -23,7 +23,7 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_gnl(char *s1, char *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
@@ -40,7 +40,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t size)
+void	*ft_memcpy_gnl(void *dest, const void *src, size_t size)
 {
 	unsigned char	*dp;
 	unsigned char	*sp;
@@ -69,7 +69,7 @@ size_t	ft_linelen(const char *s)
 	return (cnt);
 }
 
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_gnl(const char *s)
 {
 	size_t cnt;
 

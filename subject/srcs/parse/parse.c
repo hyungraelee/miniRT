@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 15:18:58 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/03 18:23:40 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	info_c(char **info, t_scene *scene)
 	double		degrees;
 	char		**element;
 
-	if (info[0][1] != '\0' || info[4] != '\0')
+	if (info[0][1] != '\0' || info[4] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
 	orig = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
@@ -53,7 +53,7 @@ int	info_l(char **info, t_scene *scene)
 	t_color3	color;
 	char		**element;
 
-	if (info[0][1] != '\0' || info[4] != '\0')
+	if (info[0][1] != '\0' || info[4] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
 	position = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
@@ -74,7 +74,7 @@ int	info_sp(char **info, t_scene *scene, t_object **world)
 	t_color3	color;
 	char		**element;
 
-	if (info[0][2] != '\0' || info[4] != '\0')
+	if (info[0][2] != '\0' || info[4] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
 	center = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
@@ -95,7 +95,7 @@ int	info_pl(char **info, t_scene *scene, t_object **world)
 	t_color3	color;
 	char		**element;
 
-	if (info[0][2] != '\0' || info[4] != '\0')
+	if (info[0][2] != '\0' || info[4] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
 	center = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
@@ -119,7 +119,7 @@ int	info_sq(char **info, t_scene *scene, t_object **world)
 	t_color3	color;
 	char		**element;
 
-	if (info[0][2] != '\0' || info[5] != '\0')
+	if (info[0][2] != '\0' || info[5] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
 	center = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
@@ -143,7 +143,7 @@ int	info_cy(char **info, t_scene *scene, t_object **world)
 	t_color3	color;
 	char		**element;
 
-	if (info[0][2] != '\0' || info[6] != '\0')
+	if (info[0][2] != '\0' || info[6] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
 	center = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
@@ -167,7 +167,7 @@ int	info_tr(char **info, t_scene *scene, t_object **world)
 	t_color3	color;
 	char		**element;
 
-	if (info[0][2] != '\0' || info[5] != '\0')
+	if (info[0][2] != '\0' || info[5] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
 	a = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
