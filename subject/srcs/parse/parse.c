@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 00:01:55 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/03 15:18:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	info_r(char	**info, t_scene *scene)
 {
-	if (info[0][1] != '\0' || info[3] != '\0')
+	if (info[0][1] != '\0' || info[3] != NULL)
 		return (-1);
 	scene->canvas = canvas(atoi(info[1]), atoi(info[2]));
 	return (1);
@@ -217,7 +217,7 @@ int	handle_info(char **info, t_scene *scene)
 	return (1);
 }
 
-int	parse_rt(char	*argv, t_scene *scene)
+int	parse_rt(char *argv, t_scene *scene)
 {
 	int		fd;
 	int		ret;

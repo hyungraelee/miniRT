@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 19:08:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 21:24:19 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/03 15:15:53 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 # define _USE_MATH_DEFINES
 # include "minirt.h"
 
-// 1. ê³µìš© êµ¬ì¡°ì²?
+// 1. ê³µìš© êµ¬ì¡°ï¿½?
 typedef struct s_vec3		t_vec3;
 typedef struct s_vec3		t_point3;
 typedef struct s_vec3		t_color3;
 typedef struct s_ray		t_ray;
 typedef struct s_hit_record	t_hit_record;
 
-// 2. ?¥ë©? êµ¬ì¡°ì²?
+// 2. ?ï¿½ï¿½ï¿½? êµ¬ì¡°ï¿½?
 typedef struct s_camera		t_camera;
 typedef struct s_canvas		t_canvas;
 typedef struct s_scene		t_scene;
 
-// 3. ?˜¤ë¸Œì ?Š¸ êµ¬ì¡°ì²?
+// 3. ?ï¿½ï¿½ë¸Œì ?ï¿½ï¿½ êµ¬ì¡°ï¿½?
 typedef struct s_object		t_object;
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
@@ -37,14 +37,14 @@ typedef struct s_cylinder	t_cylinder;
 typedef struct s_square		t_square;
 typedef struct s_light		t_light;
 
-typedef struct s_data		t_data;
+typedef struct s_img		t_img;
 typedef struct s_vars		t_vars;
-// 4. ?‹ë³„ì ë§¤í¬ë¡?
+// 4. ?ï¿½ï¿½ë³„ì ë§¤í¬ï¿½?
 typedef int					t_bool;
 # define FALSE 0
 # define TRUE 1
 
-// 5. ë³??™˜ êµ¬ì¡°ì²? ë°? ë§¤í¬ë¡?
+// 5. ï¿½??ï¿½ï¿½ êµ¬ì¡°ï¿½? ï¿½? ë§¤í¬ï¿½?
 # define X 1
 # define Y 2
 # define Z 3
@@ -60,11 +60,11 @@ typedef int					t_object_type;
 # define CY 4
 # define SQ 5
 
-// ?—„ì²? ?‘??? ê°?
+// ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½??? ï¿½?
 # define EPSILON 1e-6
 # define LUMEN 3
 
-// ê³µìš© êµ¬ì¡°ì²?
+// ê³µìš© êµ¬ì¡°ï¿½?
 struct	s_vec3
 {
 	double	x;
@@ -89,7 +89,7 @@ struct s_hit_record
 	t_color3	albedo;
 };
 
-// ?¥ë©? êµ¬ì¡°ì²?
+// ?ï¿½ï¿½ï¿½? êµ¬ì¡°ï¿½?
 struct s_camera
 {
 	t_point3	orig;
@@ -118,7 +118,7 @@ struct				s_scene
 	t_hit_record	rec;
 };
 
-// ?˜¤ë¸Œì ?Š¸ êµ¬ì¡°ì²?
+// ?ï¿½ï¿½ë¸Œì ?ï¿½ï¿½ êµ¬ì¡°ï¿½?
 struct s_object
 {
 	t_object_type	type;
@@ -173,16 +173,16 @@ struct s_light
 	double		bright_ratio;
 };
 
-// ë³??™˜ êµ¬ì¡°ì²?
+// ï¿½??ï¿½ï¿½ êµ¬ì¡°ï¿½?
 
 struct  s_vars {
-        void    *mlx;
-        void    *win;
+		void	*mlx;
+		void	*win;
 		t_scene	*scene;
-		t_data	*img;
+		t_img	*img;
 };
 
-struct s_data {
+struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;

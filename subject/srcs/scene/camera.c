@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 23:26:07 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 23:56:02 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/03 14:29:45 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_camera	camera(t_canvas *canvas, t_point3 orig, t_vec3 normal, double degrees)
 	t_vec3		n_y;
 
 	fov = (M_PI / 180) * degrees;
-	viewport_width = 2.0 * tan(fov);
+	viewport_width = 2.0 * tan(fov / 2);
 	focal_len = 1.0;
 	cam.orig = orig;
 	cam.viewport_w = viewport_width;

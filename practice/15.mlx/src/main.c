@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 12:51:31 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 21:41:29 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/03 15:18:14 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_scene		*scene_init(void)
 	t_object	*world;
 	t_object	*lights;
 
-	//추후 NULL?�� ?��?�� ?��?��?�� ?��?�� 처리�?? ?��?��.
+	//추후 NULL?�� ?��?�� ?��?��?�� ?��?�� 처리�?? ?��?��.
 	if (!(scene = (t_scene *)malloc(sizeof(t_scene))))
 		return (NULL);
 	scene->canvas = canvas(1500, 900);
@@ -42,7 +42,7 @@ t_scene		*scene_init(void)
 	oadd(&world, object(SQ, square(point3(-10, 2, -2), vec3(0, 1, 1), 4), color3(0.4, 1, 1)));
 	oadd(&world, object(SP, sphere(point3(2, 0, -5), 2), color3(0, 0.5, 0)));
 	scene->world = world;
-	lights = object(LIGHT_POINT, light_point(point3(0, 20, 5), color3(1, 1, 1), 0.5), color3(0, 0, 0)); // ?���?? albedo
+	lights = object(LIGHT_POINT, light_point(point3(0, 20, 5), color3(1, 1, 1), 0.5), color3(0, 0, 0)); // ?���?? albedo
 	scene->light = lights;
 	return (scene);
 }
