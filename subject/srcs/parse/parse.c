@@ -6,17 +6,18 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 18:23:40 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/04 18:17:28 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include <stdio.h>
 
 int	info_r(char	**info, t_scene *scene)
 {
 	if (info[0][1] != '\0' || info[3] != NULL)
 		return (-1);
-	scene->canvas = canvas(atoi(info[1]), atoi(info[2]));
+	scene->canvas = canvas(ft_atoi(info[1]), ft_atoi(info[2]));
 	return (1);
 }
 
@@ -32,7 +33,7 @@ int	info_c(char **info, t_scene *scene)
 	double		degrees;
 	char		**element;
 
-	if (info[0][1] != '\0' || info[4] != NULL)
+	if (info[4] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
 	orig = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
@@ -47,12 +48,13 @@ int	info_c(char **info, t_scene *scene)
 
 int	info_l(char **info, t_scene *scene)
 {
-	t_object	*lights;
+	// t_object	*lights;
 	t_point3	position;
 	double		bright_ratio;
 	t_color3	color;
 	char		**element;
 
+	// lights = NULL;
 	if (info[0][1] != '\0' || info[4] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
@@ -63,7 +65,9 @@ int	info_l(char **info, t_scene *scene)
 	color = color3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
 	free(element);
 	color = vdiv(color, 255.0);
-	oadd(&lights, object(LIGHT_POINT, light_point(position, color, bright_ratio), color3(0, 0, 0)));
+	// lights = (t_object *)malloc(sizeof(t_object));
+	oadd(&scene->light, object(LIGHT_POINT, light_point(position, color, bright_ratio), color3(0, 0, 0)));
+	// scene->light = lights;
 	return (1);
 }
 
@@ -188,30 +192,29 @@ int	info_tr(char **info, t_scene *scene, t_object **world)
 
 int	handle_info(char **info, t_scene *scene)
 {
-	t_object	*world;
+	// t_object	*world;
 
-	if (!(scene = (t_scene *)malloc(sizeof(t_scene))))
-		return (-1);
+
 	if (!(check_info_err(info)))
 		return (-1);
 	if (info[0][0] == 'R')
 		info_r(info, scene);
 	// else if (info[0][0] == 'A')
 	// 	info_a(info, scene);
-	else if (info[0][0] == 'c')
+	else if (info[0][0] == 'c' && info[0][1] == '\0')
 		info_c(info, scene);
 	else if (info[0][0] == 'l')
 		info_l(info, scene);
 	else if (!(ft_strncmp(info[0], "sp", 2)))
-		info_sp(info, scene, &world);
+		info_sp(info, scene, &scene->world);
 	else if (!(ft_strncmp(info[0], "pl", 2)))
-		info_pl(info, scene, &world);
+		info_pl(info, scene, &scene->world);
 	else if (!(ft_strncmp(info[0], "sq", 2)))
-		info_sq(info, scene, &world);
+		info_sq(info, scene, &scene->world);
 	else if (!(ft_strncmp(info[0], "cy", 2)))
-		info_cy(info, scene, &world);
+		info_cy(info, scene, &scene->world);
 	else if (!(ft_strncmp(info[0], "tr", 2)))
-		info_tr(info, scene, &world);
+		info_tr(info, scene, &scene->world);
 	else
 		return (-1);
 	return (1);
@@ -224,9 +227,12 @@ int	parse_rt(char *argv, t_scene *scene)
 	char	*line;
 	char	**info;
 
+
+
 	fd = open(argv, O_RDONLY);
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
+	// printf("1111\n");
 		info = ft_split(line,' ');
 		handle_info(info, scene);
 		free(line);
@@ -234,9 +240,9 @@ int	parse_rt(char *argv, t_scene *scene)
 	}
 	if (ret < 0)
 		return (-1);
-	info = ft_split(line,' ');
-	handle_info(info, scene);
-	free(line);
-	free(info);
+	// info = ft_split(line,' ');
+	// handle_info(info, scene);
+	// free(line);
+	// free(info);
 	return (1);
 }

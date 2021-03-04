@@ -6,79 +6,40 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 16:44:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 18:31:38 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/04 18:23:28 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strchr_gnl(const char *s, int c)
+int		ft_strlen_gnl(char *s)
 {
-	while (*s != c)
-	{
-		if (*s == '\0')
-			return (0);
-		s++;
-	}
-	return ((char *)s);
-}
-
-char	*ft_strjoin_gnl(char *s1, char *s2)
-{
-	size_t	s1_len;
-	size_t	s2_len;
-	char	*str;
-
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	if (!(str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
+	int	len;
+	len = 0;
+	if (!s)
 		return (0);
-	ft_memcpy(str, s1, s1_len);
-	ft_memcpy(str + s1_len, s2, s2_len);
-	free(s1);
-	str[s1_len + s2_len] = '\0';
-	return (str);
+	while (s[len])
+		len++;
+	return (len);
 }
-
-void	*ft_memcpy_gnl(void *dest, const void *src, size_t size)
+char	*ft_strjoin_gnl(char *save, char *buff)
 {
-	unsigned char	*dp;
-	unsigned char	*sp;
-	size_t			i;
-
-	dp = (unsigned char *)dest;
-	sp = (unsigned char *)src;
-	i = 0;
-	while (i++ < size)
-		*dp++ = *sp++;
+	int		i;
+	int		j;
+	int		save_len;
+	int		buff_len;
+	char	*dest;
+	save_len = ft_strlen_gnl(save);
+	buff_len = ft_strlen_gnl(buff);
+	if (!(dest = (char *)malloc(save_len + buff_len + 1)))
+		return (NULL);
+	i = -1;
+	while (++i < save_len)
+		dest[i] = save[i];
+	j = -1;
+	while (++j < buff_len)
+		dest[i + j] = buff[j];
+	dest[i + j] = '\0';
+	free(save);
 	return (dest);
-}
-
-size_t	ft_linelen(const char *s)
-{
-	size_t	cnt;
-
-	if (!s)
-		return (0);
-	cnt = 0;
-	while (*s != '\0' && *s != '\n')
-	{
-		cnt++;
-		s++;
-	}
-	return (cnt);
-}
-
-size_t	ft_strlen_gnl(const char *s)
-{
-	size_t cnt;
-
-	if (!s)
-		return (0);
-	cnt = 0;
-	while (*s++)
-	{
-		cnt++;
-	}
-	return (cnt);
 }

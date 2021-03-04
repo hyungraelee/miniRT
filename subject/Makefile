@@ -1,6 +1,6 @@
 NAME = miniRT
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g3 -fsanitize=address #-Wall -Wextra -Werror
 AR = ar
 ARFLAGS = rc
 SRCS =	./srcs/main.c						\
@@ -60,7 +60,7 @@ $(OBJS_DIR) :
 
 $(OBJS_DIR)/%.o : %.c
 	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAG) -o $@ -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(INC) -c $<
+	@$(CC) $(CFLAGS) -o $@ -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(INC) -c $<
 
 bonus : all
 
