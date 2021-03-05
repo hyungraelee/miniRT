@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   trans.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/19 17:50:52 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 15:19:20 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/05 15:05:31 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/05 16:13:11 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef TRANS_H
+# define TRANS_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 3
-#endif
-
-int		get_next_line(int fd, char **line);
-int		ft_strlen_gnl(char *str);
-char	*ft_strjoin_gnl(char *save, char *buff);
+void	translate(t_object *obj, int axis, int sign);
+t_point3	translate_center(t_point3 center, int axis, int sign);
+void	scale(t_object *obj, int sign);
+void	rotate(t_object *obj, int axis, int sign);
 
 #endif

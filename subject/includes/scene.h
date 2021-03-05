@@ -6,14 +6,12 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 15:32:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 13:41:27 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 15:18:01 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
-
-# include "minirt.h"
 
 t_canvas	canvas(int	width, int height);
 t_camera	*camera(t_canvas *canvas, t_point3 orig, t_vec3 normal, double degrees);

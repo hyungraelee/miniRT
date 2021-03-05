@@ -9,6 +9,7 @@ SRCS =	./srcs/main.c						\
 		./srcs/mlx_cntl/rendering.c			\
 		./srcs/mlx_cntl/set_mlx.c			\
 		./srcs/mlx_cntl/color.c				\
+		./srcs/mlx_cntl/control/control.c	\
 		./srcs/parse/parse.c				\
 		./srcs/parse/parse_utils.c			\
 		./srcs/scene/camera.c				\
@@ -24,6 +25,7 @@ SRCS =	./srcs/main.c						\
 		./srcs/trace/hit/hit_triangle.c		\
 		./srcs/trace/ray/phong_lighting.c	\
 		./srcs/trace/ray/ray.c				\
+		./srcs/trans/translate.c			\
 		./srcs/utils/object_utils.c			\
 		./srcs/utils/vec3_utils.c
 
@@ -32,10 +34,12 @@ SRCS_NAME = $(SRCS:%.c=%)
 SRCS_DIR =	./srcs				\
 			./srcs/gnl			\
 			./srcs/mlx_cntl		\
+			./srcs/mlx_cntl/control \
 			./srcs/parse		\
 			./srcs/scene		\
 			./srcs/trace/hit	\
 			./srcs/trace/ray	\
+			./srcs/trans		\
 			./srcs/utils
 
 OBJS_DIR = ./objs

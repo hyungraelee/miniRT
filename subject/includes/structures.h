@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 19:08:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 13:37:48 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 15:20:08 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCTURES_H
 
 # define _USE_MATH_DEFINES
-# include "minirt.h"
 
 // 1. 공용 구조�?
 typedef struct s_vec3		t_vec3;

@@ -6,15 +6,12 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:16:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/02 18:38:57 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 15:20:23 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
-
-# include "minirt.h"
-
 // vector util
 t_vec3		vec3(double a, double b, double c);
 t_point3	point3(double a, double b, double c);

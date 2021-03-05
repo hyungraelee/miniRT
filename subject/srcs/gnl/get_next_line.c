@@ -6,11 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:17 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/04 18:22:40 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 15:19:30 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "minirt.h"
 
 int		is_newline(char *save)
 {

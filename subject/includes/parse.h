@@ -6,14 +6,12 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:12:51 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 00:06:53 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 15:20:33 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
-
-# include "minirt.h"
 
 int	parse_rt(char	*argv, t_scene *scene);
 int	handle_info(char **info, t_scene *scene);

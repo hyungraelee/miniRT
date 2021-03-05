@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 13:41:39 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 16:10:08 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
 	parse_rt(argv[1], vars.scene);
 	set_mlx(&vars);
 	rendering(&vars);
+	handle_hook(&vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

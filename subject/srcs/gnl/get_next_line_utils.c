@@ -6,11 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 16:44:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/04 18:23:28 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 15:19:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "minirt.h"
 
 int		ft_strlen_gnl(char *s)
 {
