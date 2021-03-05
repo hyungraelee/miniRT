@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/04 17:24:36 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 13:41:39 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_scene	*scene_init()
 		return (NULL);
 	// if (!(scene->world = (t_object *)malloc(sizeof(t_object))))
 	// 	return (-1);
+	scene->camera = NULL;
 	scene->light = NULL;
 	scene->world = NULL;
 	return (scene);

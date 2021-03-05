@@ -8,11 +8,12 @@ SRCS =	./srcs/main.c						\
 		./srcs/gnl/get_next_line_utils.c	\
 		./srcs/mlx_cntl/rendering.c			\
 		./srcs/mlx_cntl/set_mlx.c			\
-		./srcs/mlx_cntl/color.c			\
+		./srcs/mlx_cntl/color.c				\
 		./srcs/parse/parse.c				\
 		./srcs/parse/parse_utils.c			\
 		./srcs/scene/camera.c				\
 		./srcs/scene/canvas.c				\
+		./srcs/scene/ambient.c				\
 		./srcs/scene/object_create.c		\
 		./srcs/trace/hit/hit.c				\
 		./srcs/trace/hit/normal.c			\

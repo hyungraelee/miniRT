@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 19:08:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 15:15:53 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 13:37:48 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_hit_record	t_hit_record;
 // 2. ?���? 구조�?
 typedef struct s_camera		t_camera;
 typedef struct s_canvas		t_canvas;
+typedef struct s_ambient	t_ambient;
 typedef struct s_scene		t_scene;
 
 // 3. ?��브젝?�� 구조�?
@@ -108,10 +109,17 @@ struct s_canvas
 	double	aspect_ratio;
 };
 
+struct	s_ambient
+{
+	double		ratio;
+	t_color3	ambient_color;
+};
+
 struct				s_scene
 {
 	t_canvas		canvas;
-	t_camera		camera;
+	t_camera		*camera;
+	t_ambient		ambient;
 	t_object		*world;
 	t_object		*light;
 	t_ray			ray;

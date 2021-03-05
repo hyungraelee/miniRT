@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 16:15:53 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 15:44:04 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/05 13:13:00 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 	t_vec3		view_dir;
 	t_vec3		reflect_dir;
 
-	double		ka;
+	// double		ka;
 	double		kd;
 	double		ks;
 	double		ksn;
@@ -99,11 +99,10 @@ t_color3	point_light_get(t_scene *scene, t_light *light)
 	light_dir = vunit(light_dir);
 	view_dir = vunit(vmul(scene->ray.dir, -1)); // primary ray 거꾸로 뒤집음.
 	reflect_dir = reflect(vmul(light_dir, -1), scene->rec.normal);
-	ka = 0.1; // ambient strength
 	kd = fmax(vdot(scene->rec.normal, light_dir), 0.0); // diffuse strength
 	ks = 0.5; // specular strength 이거 우리 과제에서 rt파일에 어떻게 들어오는지 체크
 	ksn = 64; // 이거 우리 과제에서 rt파일에 어떻게 들어오는지 체크
-	ambient = vmul(light->light_color, ka);
+	ambient = vmul(scene->ambient.ambient_color, scene->ambient.ratio);
 	diffuse = vmul(light->light_color, kd);
 	spec = pow(fmax(vdot(view_dir, reflect_dir), 0.0), ksn);
 	specular = vmul(vmul(light->light_color, ks), spec);
