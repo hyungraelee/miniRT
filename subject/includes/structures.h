@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 19:08:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 15:20:08 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/06 17:59:25 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_light		t_light;
 
 typedef struct s_img		t_img;
 typedef struct s_vars		t_vars;
+typedef struct s_mode		t_mode;
 // 4. ?��별자 매크�?
 typedef int					t_bool;
 # define FALSE 0
@@ -53,12 +54,18 @@ typedef int					t_bool;
 # define THETA (M_PI / (double)18)
 
 typedef int					t_object_type;
-# define SP 0
-# define LIGHT_POINT 1
+# define SP 1
 # define PL 2
 # define TR 3
 # define CY 4
 # define SQ 5
+# define CAM 6
+# define LIGHT_POINT 7
+
+# define TRANSLATE 1
+# define ROTATE 2
+# define SCALE 3
+# define OFF 0
 
 // ?���? ?��??? �?
 # define EPSILON 1e-6
@@ -117,12 +124,14 @@ struct	s_ambient
 struct				s_scene
 {
 	t_canvas		canvas;
-	t_camera		*camera;
+	t_object		*camera;
 	t_ambient		ambient;
 	t_object		*world;
 	t_object		*light;
 	t_ray			ray;
 	t_hit_record	rec;
+	int				camera_cnt;
+	int				light_cnt;
 };
 
 // ?��브젝?�� 구조�?
@@ -131,6 +140,7 @@ struct s_object
 	t_object_type	type;
 	void			*element;
 	void			*next;
+	void			*pre;
 	t_color3		albedo;
 };
 
@@ -187,6 +197,7 @@ struct  s_vars {
 		void	*win;
 		t_scene	*scene;
 		t_img	*img;
+		t_mode	*mode;
 };
 
 struct s_img {
@@ -195,6 +206,13 @@ struct s_img {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+};
+
+struct s_mode {
+	t_object_type		selected;
+	int					trans;
+	int					axis;
+	int					sign;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 13:02:05 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/06 17:36:25 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,18 @@ int	info_c(char **info, t_scene *scene)
 	normal = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
 	free(element);
 	degrees = ft_atod(info[3]);
-	scene->camera = camera(&scene->canvas, orig, normal, degrees);
+	oadd(&scene->camera, object(CAM, camera(&scene->canvas, orig, normal, degrees), color3(0, 0, 0)));
+	scene->camera_cnt++;
 	return (1);
 }
 
 int	info_l(char **info, t_scene *scene)
 {
-	// t_object	*lights;
 	t_point3	position;
 	double		bright_ratio;
 	t_color3	color;
 	char		**element;
 
-	// lights = NULL;
 	if (info[0][1] != '\0' || info[4] != NULL)
 		return (-1);
 	element = ft_split(info[1], ',');
@@ -74,9 +73,8 @@ int	info_l(char **info, t_scene *scene)
 	color = color3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
 	free(element);
 	color = vdiv(color, 255.0);
-	// lights = (t_object *)malloc(sizeof(t_object));
 	oadd(&scene->light, object(LIGHT_POINT, light_point(position, color, bright_ratio), color3(0, 0, 0)));
-	// scene->light = lights;
+	scene->light_cnt++;
 	return (1);
 }
 

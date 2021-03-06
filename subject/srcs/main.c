@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 16:10:08 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/06 17:35:32 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_scene	*scene_init()
 	scene->camera = NULL;
 	scene->light = NULL;
 	scene->world = NULL;
+	scene->camera_cnt = 0;
+	scene->light_cnt = 0;
 	return (scene);
 }
 
