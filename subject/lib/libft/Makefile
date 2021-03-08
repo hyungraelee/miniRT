@@ -54,7 +54,6 @@ SRCS =	\
 		./ft_lstmap.c		\
 		./ft_atod.c			\
 		./ft_issign.c		\
-		./ft_strrev.c		\
 		./ft_strcmp.c
 
 OBJS = $(SRCS:.c=.o)
