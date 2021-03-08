@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_utils.c                                     :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 19:13:50 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 14:03:17 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/08 17:36:55 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/08 17:39:51 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libft.h"
 
-void	oadd(t_object **list, t_object *new)
+char	*ft_strrev(char *str)
 {
-	t_object	*cur;
-	void		*pre;
+	int		i;
+	int		len;
+	char	tmp;
 
-	if(*list == NULL)
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	len = ft_strlen;
+	while (++i < --len)
 	{
-		*list = new;
-		new->pre = NULL;
-		return ;
+		tmp = str[i];
+		str[i] = str[len];
+		str[len] = tmp;
 	}
-	cur = *list;
-	while (cur->next)
-		cur = cur->next;
-	pre = cur;
-	cur->next = new;
-	new->pre = pre;
+	return (str);
 }

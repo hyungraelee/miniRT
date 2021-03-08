@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/06 17:36:25 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/08 16:22:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	info_c(char **info, t_scene *scene)
 	free(element);
 	degrees = ft_atod(info[3]);
 	oadd(&scene->camera, object(CAM, camera(&scene->canvas, orig, normal, degrees), color3(0, 0, 0)));
-	scene->camera_cnt++;
 	return (1);
 }
 
@@ -74,7 +73,6 @@ int	info_l(char **info, t_scene *scene)
 	free(element);
 	color = vdiv(color, 255.0);
 	oadd(&scene->light, object(LIGHT_POINT, light_point(position, color, bright_ratio), color3(0, 0, 0)));
-	scene->light_cnt++;
 	return (1);
 }
 

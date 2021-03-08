@@ -26,6 +26,8 @@ SRCS =	./srcs/main.c						\
 		./srcs/trace/ray/phong_lighting.c	\
 		./srcs/trace/ray/ray.c				\
 		./srcs/trans/translate.c			\
+		./srcs/trans/rotate.c				\
+		./srcs/trans/scale.c				\
 		./srcs/utils/object_utils.c			\
 		./srcs/utils/vec3_utils.c
 

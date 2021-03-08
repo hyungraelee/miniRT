@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_utils.c                                     :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 19:13:50 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 14:03:17 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/08 17:48:22 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/08 17:53:06 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libft.h"
 
-void	oadd(t_object **list, t_object *new)
+int	ft_strcmp(char *s1, char *s2)
 {
-	t_object	*cur;
-	void		*pre;
+	int	i;
 
-	if(*list == NULL)
+	i = 0;
+	while (s1[i])
 	{
-		*list = new;
-		new->pre = NULL;
-		return ;
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
-	cur = *list;
-	while (cur->next)
-		cur = cur->next;
-	pre = cur;
-	cur->next = new;
-	new->pre = pre;
+	if (s2[i] != '\0')
+		return (s1[i] - s2[i]);
+	return (0);
 }

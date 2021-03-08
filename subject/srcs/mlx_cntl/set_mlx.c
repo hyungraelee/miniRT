@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:05:41 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 16:20:19 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/08 15:03:13 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	set_mlx(t_vars *vars)
 	vars->img = (t_img *)malloc(sizeof(t_img));
 	// 	// return (NULL);
 	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, 400, 400, "Gogi joa");
+	vars->win = mlx_new_window(vars->mlx, 1000, 1000, "Gogi joa");
 	vars->img->img = mlx_new_image(vars->mlx, vars->scene->canvas.width, vars->scene->canvas.height);
 	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bits_per_pixel, &vars->img->line_length, &vars->img->endian);
 }

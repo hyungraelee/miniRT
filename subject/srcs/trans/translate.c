@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:10:06 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:50 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/08 14:58:40 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	translate(t_object *obj, int axis, int sign)
 	// t_triangle	*tr;
 	t_cylinder	*cy;
 	t_square	*sq;
+	t_light		*li;
+	t_camera	*cam;
 
 	if (obj->type == SP)
 	{
@@ -113,5 +115,15 @@ void	translate(t_object *obj, int axis, int sign)
 	{
 		sq = obj->element;
 		sq->center = translate_center(sq->center, axis, sign);
+	}
+	else if (obj->type == LIGHT_POINT)
+	{
+		li = obj->element;
+		li->origin = translate_center(li->origin, axis, sign);
+	}
+	else if (obj->type == CAM)
+	{
+		cam = obj->element;
+		cam->orig = translate_center(cam->orig, axis, sign);
 	}
 }

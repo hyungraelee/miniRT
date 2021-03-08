@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:31:17 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/06 17:51:04 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/08 14:32:43 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,12 @@
 # define KEY_ALT_GR			262
 # define KEY_FN				279
 # define KEY_CTRL_RIGHT		269
+
 # define KEY_LEFT			123
 # define KEY_DOWN			125
 # define KEY_RIGHT			124
 # define KEY_UP				126
+
 # define KEY_DEL			117
 # define KEY_HOME			115
 # define KEY_END			119
