@@ -6,12 +6,12 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:14:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 18:24:05 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/08 18:43:09 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-// #define C_GREN \033[32m
+#define C_GREN "\033[32m"
 
 int	close_window(t_vars *vars)
 {
@@ -21,7 +21,7 @@ int	close_window(t_vars *vars)
 
 void	transform_scene(t_vars *vars)
 {
-		// printf("trans C_GREN\n");
+	printf("%s trans\n", C_GREN);
 	if (vars->mode->trans == TRANSLATE)
 	{
 		translate(vars->cur, vars->mode->axis, vars->mode->sign);
