@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 13:52:55 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/09 16:54:08 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/09 18:23:45 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ void	set_mlx_bmp(t_vars *vars)
 	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bits_per_pixel, &vars->img->line_length, &vars->img->endian);
 }
 
-void	rendering_bmp(t_vars *vars)
+void	rendering_bmp(t_vars *vars, int fd)
 {
 	int		i;
 	int		j;
 	double	u;
 	double	v;
 	int		rgb;
+	// char	*rgb;
 
 	j = vars->scene->canvas.height - 1;
 	while (j >= 0)
@@ -39,6 +40,8 @@ void	rendering_bmp(t_vars *vars)
 			u = (double)i / (vars->scene->canvas.width - 1);
 			v = (double)j / (vars->scene->canvas.height - 1);
 			vars->scene->ray = ray_primary(vars->scene->camera->element, u, v);
+			// rgb = ft_itoa(create_rgb(ray_color(vars->scene)));
+			// write(fd, rgb, 4);
 			rgb = create_rgb(ray_color(vars->scene));
 			my_mlx_pixel_put(vars->img, vars->scene->canvas.width - i - 1, vars->scene->canvas.height - j - 1, rgb);
 			i++;
@@ -64,10 +67,17 @@ void	set_bitmap_file(t_vars *vars, int fd)
 	tmp = 40;
 	ft_memmove(&bmp_info[0], &tmp, 4);
 	ft_memmove(&bmp_info[4], &(vars->scene->canvas.width), 4);
-	ft_memmove(&bmp_info[8], &(vars->scene->canvas.height), 4);
+	tmp = -vars->scene->canvas.height;
+	ft_memmove(&bmp_info[8], &tmp, 4);
 	tmp = 1;
 	ft_memmove(&bmp_info[12], &tmp, 2);
 	ft_memmove(&bmp_info[14], &(vars->img->bits_per_pixel), 2);
+	tmp = sizeof(int) * vars->scene->canvas.width * vars->scene->canvas.height;
+	ft_memmove(&bmp_info[20], &tmp, 4);
+	tmp = vars->scene->canvas.width;
+	ft_memmove(&bmp_info[24], &tmp, 4);
+	tmp = vars->scene->canvas.height;
+	ft_memmove(&bmp_info[28], &tmp, 4);
 	write(fd, bmp_info, 40);
 	// vars->bmp_file = (t_bitmapfileheader *)malloc(sizeof(t_bitmapfileheader));
 	// vars->bmp_file->bf_type = 0x424D;
@@ -99,18 +109,32 @@ void	save_bitmap(t_vars *vars)
 {
 	int		fd;
 	int		i;
+	int		j;
 	char	*img;
+	char	*rgb;
 
 	fd = open("./image.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	set_bitmap_file(vars, fd);
 	// set_bitmap_info(vars, fd);
-	rendering_bmp(vars);
-	i = 0;
-	img = vars->img->addr;
-	while (i < (vars->img->line_length / 4) * vars->scene->canvas.height)
-	{
-		if (i % (vars->img->line_length / 4) < vars->scene->canvas.width)
-			write(fd, &img[i], 4);
-		i++;
-	}
+	rendering_bmp(vars, fd);
+
+
+
+	// i = 0;
+	// j = 0;
+	// img = vars->img->addr;
+	// while (j < vars->scene->canvas.height)
+	// {
+	// 	i = 0;
+	// 	while (i < vars->scene->canvas.width)
+	// 	{
+	// 		write(fd, &)
+	// 	}
+		// rgb = ft_itoa(*img);
+		// write(fd, rgb, 4);
+		// free(rgb);
+		// i++;
+		// img += 4;
+	// }
+	close(fd);
 }
