@@ -29,7 +29,8 @@ SRCS =	./srcs/main.c						\
 		./srcs/trans/rotate.c				\
 		./srcs/trans/scale.c				\
 		./srcs/utils/object_utils.c			\
-		./srcs/utils/vec3_utils.c
+		./srcs/utils/vec3_utils.c			\
+		./srcs/bitmap/bitmap.c
 
 SRCS_NAME = $(SRCS:%.c=%)
 
@@ -42,7 +43,8 @@ SRCS_DIR =	./srcs				\
 			./srcs/trace/hit	\
 			./srcs/trace/ray	\
 			./srcs/trans		\
-			./srcs/utils
+			./srcs/utils		\
+			./srcs/bitmap
 
 OBJS_DIR = ./objs
 LIBFT = libft.a

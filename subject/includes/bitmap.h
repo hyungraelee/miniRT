@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   bitmap.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 16:34:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/09 14:46:18 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/09 13:39:02 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/09 16:11:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef BITMAP_H
+# define BITMAP_H
 
-# include <stdio.h>
-# include <fcntl.h>
-# include <math.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include "structures.h"
-# include "scene.h"
-# include "parse.h"
-# include "utils.h"
-# include "mlx_cntl.h"
-# include "trace.h"
-# include "trans.h"
-# include "key_macos.h"
-# include "libft.h"
-# include "mlx.h"
-# include "bitmap.h"
-# include "get_next_line.h"
 
+
+void	save_bitmap(t_vars *vars);
+void	set_mlx_bmp(t_vars *vars);
 
 #endif

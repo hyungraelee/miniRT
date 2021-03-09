@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 19:08:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 16:22:32 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/09 16:39:19 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ typedef struct s_light		t_light;
 typedef struct s_img		t_img;
 typedef struct s_vars		t_vars;
 typedef struct s_mode		t_mode;
+
+typedef struct s_bitmapfileheader	t_bitmapfileheader;
+typedef struct s_bitmapinfoheader	t_bitmapinfoheader;
 // 4. ?��별자 매크�?
 typedef int					t_bool;
 # define FALSE 0
@@ -193,12 +196,14 @@ struct s_light
 // �??�� 구조�?
 
 struct  s_vars {
-		void	*mlx;
-		void	*win;
-		t_scene	*scene;
-		t_img	*img;
-		t_mode	*mode;
+		void		*mlx;
+		void		*win;
+		t_scene		*scene;
+		t_img		*img;
+		t_mode		*mode;
 		t_object	*cur;
+		t_bitmapfileheader	*bmp_file;
+		t_bitmapinfoheader	*bmp_info;
 };
 
 struct s_img {
@@ -215,5 +220,33 @@ struct s_mode {
 	int					axis;
 	int					sign;
 };
+
+# pragma pack(push, 1)
+
+struct s_bitmapfileheader     // BMP 비트맵 파일 헤더 구조체
+{
+    unsigned short bf_type;           // BMP 파일 매직 넘버
+    unsigned int   bf_size;           // 파일 크기
+    unsigned short bf_reserved1;      // 예약
+    unsigned short bf_reserved2;      // 예약
+    unsigned int   bf_off_bits;        // 비트맵 데이터의 시작 위치
+};
+
+struct s_bitmapinfoheader     // BMP 비트맵 정보 헤더 구조체(DIB 헤더)
+{
+    unsigned int   bi_size;           // 현재 구조체의 크기
+    int            bi_width;          // 비트맵 이미지의 가로 크기
+    int            bi_height;         // 비트맵 이미지의 세로 크기
+    unsigned short bi_planes;         // 사용하는 색상판의 수
+    unsigned short bi_bit_count;       // 픽셀 하나를 표현하는 비트 수
+    unsigned int   bi_compression;    // 압축 방식
+    unsigned int   bi_size_image;      // 비트맵 이미지의 픽셀 데이터 크기
+    int            bi_x_pels_per_meter;  // 그림의 가로 해상도(미터당 픽셀)
+    int            bi_y_pels_per_meter;  // 그림의 세로 해상도(미터당 픽셀)
+    unsigned int   bi_clr_used;        // 색상 테이블에서 실제 사용되는 색상 수
+    unsigned int   bi_clr_important;   // 비트맵을 표현하기 위해 필요한 색상 인덱스 수
+};
+
+# pragma pack(pop)
 
 #endif

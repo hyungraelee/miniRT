@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 18:34:37 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/09 16:18:08 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,17 @@ int main(int argc, char *argv[])
 
 	vars.scene = scene_init();
 
-	parse_rt(argv[1], vars.scene);
-	set_mlx(&vars);
-	rendering(&vars);
-	handle_hook(&vars);
-	mlx_loop(vars.mlx);
-	// else if (argc == 3 && ft_strcmp(argv[1], "--save"))
+	// parse_rt(argv[1], vars.scene);
+	// set_mlx(&vars);
+	// rendering(&vars);
+	// handle_hook(&vars);
+	// mlx_loop(vars.mlx);
+	// if (argc == 3 && ft_strcmp(argv[1], "--save"))
 	// {
 
-	// 		parse_rt(argv[2], vars.scene);
-	// 		rendering_bmp(vars);
+			parse_rt(argv[1], vars.scene);
+			set_mlx_bmp(&vars);
+			save_bitmap(&vars);
 	// }
 	// else
 	// 	err;
