@@ -12,6 +12,7 @@ SRCS =	./srcs/main.c						\
 		./srcs/mlx_cntl/control/control.c	\
 		./srcs/parse/parse.c				\
 		./srcs/parse/parse_utils.c			\
+		./srcs/parse/parse_err.c			\
 		./srcs/scene/camera.c				\
 		./srcs/scene/canvas.c				\
 		./srcs/scene/ambient.c				\

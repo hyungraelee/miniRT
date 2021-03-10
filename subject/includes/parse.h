@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:12:51 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 15:20:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/10 18:22:32 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,17 @@ int	info_sq(char **info, t_scene *scene, t_object **world);
 int	info_cy(char **info, t_scene *scene, t_object **world);
 int	info_tr(char **info, t_scene *scene, t_object **world);
 
-int	ft_isright_info(char c);
-int	check_info_err(char **info);
+int			check_info_err(char **info);
+int			check_color(t_color3 color);
+
+int			check_err_r(char **info);
+int			check_err_a(char **info);
+int			check_err_c(char **info);
+int			check_err_l(char **info);
+int			check_err_sp(char **info);
+int			check_err_pl(char **info);
+int			check_err_sq(char **info);
+int			check_err_cy(char **info);
+int			check_err_tr(char **info);
 
 #endif
