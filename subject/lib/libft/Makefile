@@ -54,7 +54,8 @@ SRCS =	\
 		./ft_lstmap.c		\
 		./ft_atod.c			\
 		./ft_issign.c		\
-		./ft_strcmp.c
+		./ft_strcmp.c		\
+		./ft_strrev.c
 
 OBJS = $(SRCS:.c=.o)
 # BONUS_OBJS = $(BONUS_SRCS:.c=.o)

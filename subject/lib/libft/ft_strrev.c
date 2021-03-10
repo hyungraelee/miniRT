@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bitmap.h                                           :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 13:39:02 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/10 14:44:30 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/10 14:17:08 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/10 14:21:06 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITMAP_H
-# define BITMAP_H
+#include "libft.h"
 
+char	*ft_strrev(char *str)
+{
+	int		i;
+	int		len;
+	char	tmp;
 
-void	bitmap(char *argv, t_vars *vars);
-void	save_bitmap(t_vars *vars);
-void	set_mlx_bmp(t_vars *vars);
-
-#endif
+	if (!str)
+		return (NULL);
+	i = -1;
+	len = ft_strlen(str);
+	while (++i < --len)
+	{
+		tmp = str[i];
+		str[i] = str[len];
+		str[len] = tmp;
+	}
+	return (str);
+}

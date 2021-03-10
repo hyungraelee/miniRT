@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 16:26:20 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 18:35:49 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/10 14:25:15 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ t_list			*ft_lstmap(t_list *lst, \
 double			ft_atod(char *str);
 int				ft_issign(char c);
 int				ft_strcmp(char *s1, char *s2);
+char			*ft_strrev(char *str);
 #endif
