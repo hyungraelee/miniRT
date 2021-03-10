@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 13:52:55 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/09 18:23:45 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/10 13:10:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,31 +110,25 @@ void	save_bitmap(t_vars *vars)
 	int		fd;
 	int		i;
 	int		j;
-	char	*img;
-	char	*rgb;
+	unsigned int	*img;
+	// unsigned int	rgb;
 
 	fd = open("./image.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	set_bitmap_file(vars, fd);
 	// set_bitmap_info(vars, fd);
 	rendering_bmp(vars, fd);
 
-
-
-	// i = 0;
-	// j = 0;
-	// img = vars->img->addr;
-	// while (j < vars->scene->canvas.height)
-	// {
-	// 	i = 0;
-	// 	while (i < vars->scene->canvas.width)
-	// 	{
-	// 		write(fd, &)
-	// 	}
-		// rgb = ft_itoa(*img);
-		// write(fd, rgb, 4);
-		// free(rgb);
-		// i++;
-		// img += 4;
-	// }
+	j = 0;
+	img = (unsigned int *)vars->img->addr;
+	while (j < vars->scene->canvas.height)
+	{
+		i = 0;
+		while (i < vars->scene->canvas.width)
+		{
+			write(fd, img + (j * vars->img->line_length / 4) + i, vars->img->bits_per_pixel / 8);
+			i++;
+		}
+		j++;
+	}
 	close(fd);
 }
