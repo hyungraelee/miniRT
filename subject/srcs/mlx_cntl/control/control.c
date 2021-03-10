@@ -6,12 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:14:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 18:43:09 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/10 16:52:02 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#define C_GREN "\033[32m"
 
 int	close_window(t_vars *vars)
 {
@@ -21,7 +20,6 @@ int	close_window(t_vars *vars)
 
 void	transform_scene(t_vars *vars)
 {
-	printf("%s trans\n", C_GREN);
 	if (vars->mode->trans == TRANSLATE)
 	{
 		translate(vars->cur, vars->mode->axis, vars->mode->sign);
@@ -63,7 +61,6 @@ int		handle_keypress(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_L || keycode == KEY_C || keycode == KEY_O)
 	{
-		printf("mode\n");
 		if (keycode == KEY_L)
 		{
 			vars->mode->selected = LIGHT_POINT;
@@ -83,7 +80,6 @@ int		handle_keypress(int keycode, t_vars *vars)
 	}
 	if ((keycode == KEY_N || keycode == KEY_P) && vars->mode->selected != OFF)
 	{
-		printf("switch\n");
 		if (keycode == KEY_N)
 		{
 			if (vars->cur->next != NULL)
@@ -103,7 +99,6 @@ int		handle_keypress(int keycode, t_vars *vars)
 	}
 	if ((keycode == KEY_T || keycode == KEY_R || keycode == KEY_S) && vars->mode->selected != OFF)
 	{
-		printf("transform\n");
 		if (keycode == KEY_T)
 			vars->mode->trans = TRANSLATE;
 		else if (keycode == KEY_R)
@@ -120,7 +115,6 @@ int		handle_keypress(int keycode, t_vars *vars)
 	}
 	if (keycode == KEY_X || keycode == KEY_Y || keycode == KEY_Z)
 	{
-		printf("axis\n");
 		// check_err_in_axis(vars);
 		if (keycode == KEY_X)
 			vars->mode->axis = X;
@@ -132,7 +126,6 @@ int		handle_keypress(int keycode, t_vars *vars)
 	}
 	if (keycode == KEY_UP || keycode == KEY_DOWN)
 	{
-		printf("sign\n");
 		if (keycode == KEY_UP)
 			vars->mode->sign = PLUS;
 		else if (keycode == KEY_DOWN)

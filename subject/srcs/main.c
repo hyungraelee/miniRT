@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/10 14:47:35 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/10 15:14:09 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_scene	*scene_init()
 	scene->camera = NULL;
 	scene->light = NULL;
 	scene->world = NULL;
+	scene->min_width = 480;
+	scene->min_height = 480;
 	return (scene);
 }
 
@@ -39,6 +41,7 @@ int	check_input_file(char *argv)
 
 void	minirt(char *argv, t_vars *vars)
 {
+	mlx_get_screen_size(vars->mlx, &(vars->scene->max_width), &(vars->scene->max_height));
 	parse_rt(argv, vars->scene);
 	set_mlx(vars);
 	rendering(vars);

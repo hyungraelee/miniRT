@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 16:22:52 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/10 15:18:25 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,22 @@
 
 int	info_r(char	**info, t_scene *scene)
 {
+	int	width;
+	int	height;
+
 	if (info[0][1] != '\0' || info[3] != NULL)
 		return (-1);
-	scene->canvas = canvas(ft_atoi(info[1]), ft_atoi(info[2]));
+	width = ft_atoi(info[1]);
+	height = ft_atoi(info[2]);
+	if (width < scene->min_width)
+		width = scene->min_width;
+	if (height < scene->min_height)
+		height = scene->min_height;
+	if (width > scene->max_width)
+		width = scene->max_width;
+	if (height > scene->max_height)
+		height = scene->max_height;
+	scene->canvas = canvas(width, height);
 	return (1);
 }
 
