@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:34:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/09 14:46:18 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 17:06:34 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include "bitmap.h"
+# include "panel.h"
 # include "get_next_line.h"
 
 

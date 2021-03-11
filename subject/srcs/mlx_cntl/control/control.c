@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:14:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/10 16:52:02 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 17:14:08 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,20 @@ int		handle_keypress(int keycode, t_vars *vars)
 	}
 	if (keycode == KEY_ESCAPE)
 		close_window(vars);
+	print_panel(vars);
 	return (1);
 }
 
-void	handle_hook(t_vars *vars)
+int	handle_hook(t_vars *vars)
 {
-	vars->mode = (t_mode *)malloc(sizeof(t_mode));
+	if (!(vars->mode = (t_mode *)malloc(sizeof(t_mode))))
+		return (0);
+	vars->mode->selected = OFF;
+	vars->mode->trans = OFF;
+	vars->mode->axis = OFF;
+	vars->mode->sign = OFF;
+	print_panel(vars);
 	mlx_hook(vars->win, 2, 0, handle_keypress, vars);
 	mlx_hook(vars->win, 17, 0, close_window, vars);
+	return (1);
 }

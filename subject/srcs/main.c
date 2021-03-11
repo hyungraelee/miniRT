@@ -6,13 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 14:32:02 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 17:04:39 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include <stdio.h>
-#define C_RED  "\033[31m"
 
 t_scene	*scene_init()
 {
@@ -47,7 +45,8 @@ int	minirt(char *argv, t_vars *vars)
 	if (!(set_mlx(vars)))
 		return (-1);
 	rendering(vars);
-	handle_hook(vars);
+	if (!(handle_hook(vars)))
+		return (-1);
 	mlx_loop(vars->mlx);
 	return (1);
 }

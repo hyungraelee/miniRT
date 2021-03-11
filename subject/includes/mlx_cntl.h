@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:26:06 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 14:20:20 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 17:07:00 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	write_color(t_color3 pixel_color);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int		create_rgb(t_color3 color);
 
-void	handle_hook(t_vars *vars);
+int		handle_hook(t_vars *vars);
 
 #endif
