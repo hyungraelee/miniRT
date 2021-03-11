@@ -6,12 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/10 18:24:43 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 13:26:51 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include <stdio.h>
 
 int	info_r(char	**info, t_scene *scene)
 {
@@ -256,8 +255,6 @@ int	parse_rt(char *argv, t_scene *scene)
 	char	*line;
 	char	**info;
 
-
-
 	fd = open(argv, O_RDONLY);
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
@@ -268,6 +265,6 @@ int	parse_rt(char *argv, t_scene *scene)
 		free(info);
 	}
 	if (ret < 0)
-		return (-1);
+		return (0);
 	return (1);
 }

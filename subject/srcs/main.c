@@ -6,20 +6,19 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:33:10 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/10 18:17:32 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 14:32:02 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include <stdio.h>
+#define C_RED  "\033[31m"
 
 t_scene	*scene_init()
 {
 	t_scene	*scene;
 	if (!(scene = (t_scene *)malloc(sizeof(t_scene))))
 		return (NULL);
-	// if (!(scene->world = (t_object *)malloc(sizeof(t_object))))
-	// 	return (-1);
 	scene->camera = NULL;
 	scene->light = NULL;
 	scene->world = NULL;
@@ -39,26 +38,41 @@ int	check_input_file(char *argv)
 	return (1);
 }
 
-void	minirt(char *argv, t_vars *vars)
+int	minirt(char *argv, t_vars *vars)
 {
+	vars->mlx = mlx_init();
 	mlx_get_screen_size(vars->mlx, &(vars->scene->max_width), &(vars->scene->max_height));
-	parse_rt(argv, vars->scene);
-	set_mlx(vars);
+	if (!(parse_rt(argv, vars->scene)))
+		return (0);
+	if (!(set_mlx(vars)))
+		return (-1);
 	rendering(vars);
 	handle_hook(vars);
 	mlx_loop(vars->mlx);
+	return (1);
+}
+
+int	print_err(int err_code)
+{
+	if (err_code == 0)
+		printf("%s\n!!!!! Error in '.rt' file, Please check the file.\n\n", C_RED);
+	else if (err_code == -1)
+		printf("%s\n!!!!! Error in memory allocation.\n\n", C_RED);
+	return (0);
 }
 
 int main(int argc, char *argv[])
 {
 	t_vars	vars;
+	int		err_code;
 
-	vars.scene = scene_init();
+	if(!(vars.scene = scene_init()))
+		return (print_err(-1));
 	if (argc == 2 && check_input_file(argv[1]))
-		minirt(argv[1], &vars);
+		err_code = minirt(argv[1], &vars);
 	else if (argc == 3 && !ft_strcmp(argv[1], "--save") && check_input_file(argv[2]))
-		bitmap(argv[2], &vars);
-	// else
-	// 	err;
+		err_code = bitmap(argv[2], &vars);
+	if (err_code == 0 || err_code == -1)
+		return (print_err(err_code));
 	return (0);
 }
