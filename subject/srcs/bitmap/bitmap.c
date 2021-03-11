@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 13:52:55 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 14:25:37 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 18:53:41 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	set_mlx_bmp(t_vars *vars)
 	return (1);
 }
 
-void	rendering_bmp(t_vars *vars, int fd)
+void	rendering_bmp(t_vars *vars)
 {
 	int		i;
 	int		j;
@@ -84,7 +84,7 @@ void	save_bitmap(t_vars *vars)
 
 	fd = open("./image.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	set_bitmap(vars, fd);
-	rendering_bmp(vars, fd);
+	rendering_bmp(vars);
 
 	j = 0;
 	img = (unsigned int *)vars->img->addr;
