@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 18:07:34 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 15:04:55 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 18:19:29 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@ void	scale_sp(t_object *obj, int sign)
 	else if (sign == MINUS)
 		sp->diameter--;
 }
-
-// void	scale_pl(t_object *obj, int sign)
-// {
-// 	t_	*sp;
-
-// 	sp = obj->element;
-// 	if (sign == PLUS)
-// 		sp->radius++;
-// 	else if (sign == MINUS)
-// 		sp->radius--;
-// }
 
 void	scale_cy(t_object *obj, int sign)
 {
@@ -63,10 +52,6 @@ void	scale(t_object *obj, int sign)
 {
 	if (obj->type == SP)
 		scale_sp(obj, sign);
-	// else if (obj->type == PL)
-	// 	scale_pl(obj, sign);
-	// else if (obj->type == TR)
-	// 	scale_tr(obj, sign);
 	else if (obj->type == CY)
 		scale_cy(obj, sign);
 	else if (obj->type == SQ)

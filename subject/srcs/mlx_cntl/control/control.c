@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:14:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 17:14:08 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 18:35:03 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int		handle_keypress(int keycode, t_vars *vars)
 	}
 	if (keycode == KEY_X || keycode == KEY_Y || keycode == KEY_Z)
 	{
-		// check_err_in_axis(vars);
 		if (keycode == KEY_X)
 			vars->mode->axis = X;
 		else if (keycode == KEY_Y)
