@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 17:10:06 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 14:58:40 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 12:53:25 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	translate(t_object *obj, int axis, int sign)
 {
 	t_sphere	*sp;
 	t_plane		*pl;
-	// t_triangle	*tr;
+	t_triangle	*tr;
 	t_cylinder	*cy;
 	t_square	*sq;
 	t_light		*li;

@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 13:52:55 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 18:53:41 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 23:46:27 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	set_mlx_bmp(t_vars *vars)
+static int	set_mlx_bmp(t_vars *vars)
 {
 	if(!(vars->img = (t_img *)malloc(sizeof(t_img))))
 		return (0);
@@ -21,7 +21,7 @@ int	set_mlx_bmp(t_vars *vars)
 	return (1);
 }
 
-void	rendering_bmp(t_vars *vars)
+static void	rendering_bmp(t_vars *vars)
 {
 	int		i;
 	int		j;
@@ -46,7 +46,7 @@ void	rendering_bmp(t_vars *vars)
 	}
 }
 
-void	set_bitmap(t_vars *vars, int fd)
+static void	set_bitmap(t_vars *vars, int fd)
 {
 	int		tmp;
 	char	bmp_file[14];
@@ -75,7 +75,7 @@ void	set_bitmap(t_vars *vars, int fd)
 	write(fd, bmp_info, 40);
 }
 
-void	save_bitmap(t_vars *vars)
+static void	save_bitmap(t_vars *vars)
 {
 	int		fd;
 	int		i;
@@ -85,7 +85,6 @@ void	save_bitmap(t_vars *vars)
 	fd = open("./image.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	set_bitmap(vars, fd);
 	rendering_bmp(vars);
-
 	j = 0;
 	img = (unsigned int *)vars->img->addr;
 	while (j < vars->scene->canvas.height)
@@ -101,7 +100,7 @@ void	save_bitmap(t_vars *vars)
 	close(fd);
 }
 
-int	bitmap(char *argv, t_vars *vars)
+int			bitmap(char *argv, t_vars *vars)
 {
 	vars->mlx = mlx_init();
 	mlx_get_screen_size(vars->mlx, &(vars->scene->max_width), &(vars->scene->max_height));

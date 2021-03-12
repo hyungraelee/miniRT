@@ -4,15 +4,23 @@ CFLAGS = -g3 -fsanitize=address #-Wall -Wextra -Werror
 AR = ar
 ARFLAGS = rc
 SRCS =	./srcs/main.c						\
+		./srcs/print_err.c					\
+		./srcs/init.c						\
+		./srcs/minirt.c						\
 		./srcs/gnl/get_next_line.c			\
 		./srcs/gnl/get_next_line_utils.c	\
 		./srcs/mlx_cntl/rendering.c			\
 		./srcs/mlx_cntl/set_mlx.c			\
 		./srcs/mlx_cntl/color.c				\
 		./srcs/mlx_cntl/control/control.c	\
+		./srcs/mlx_cntl/control/keypress.c	\
+		./srcs/mlx_cntl/control/control_utils.c	\
 		./srcs/parse/parse.c				\
+		./srcs/parse/parse_racl.c			\
+		./srcs/parse/parse_objs.c			\
 		./srcs/parse/parse_utils.c			\
-		./srcs/parse/parse_err.c			\
+		./srcs/parse/parse_err_racl.c		\
+		./srcs/parse/parse_err_objs.c		\
 		./srcs/scene/camera.c				\
 		./srcs/scene/canvas.c				\
 		./srcs/scene/ambient.c				\
@@ -31,6 +39,7 @@ SRCS =	./srcs/main.c						\
 		./srcs/trans/scale.c				\
 		./srcs/utils/object_utils.c			\
 		./srcs/utils/vec3_utils.c			\
+		./srcs/utils/check_input.c			\
 		./srcs/bitmap/bitmap.c				\
 		./srcs/panel/axis_panel.c			\
 		./srcs/panel/default_object.c		\

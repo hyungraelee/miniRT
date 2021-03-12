@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bitmap.h                                           :+:      :+:    :+:   */
+/*   print_err.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 13:39:02 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 23:45:56 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/11 23:52:08 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/11 23:52:30 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITMAP_H
-# define BITMAP_H
+#include "minirt.h"
 
-
-int	bitmap(char *argv, t_vars *vars);
-
-#endif
+int	print_err(int err_code)
+{
+	if (err_code == 0)
+		printf("%s\n!!!!! Error in '.rt' file, Please check the file.\n\n", C_RED);
+	else if (err_code == -1)
+		printf("%s\n!!!!! Error in memory allocation.\n\n", C_RED);
+	return (0);
+}

@@ -6,15 +6,11 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 17:01:21 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 15:41:11 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 12:46:55 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-
-//hit_sphere의 첫반째 인자를 (t_sphere *) 에서 (t_object *)로 바꿔준 이유는
-//이후 텍스쳐, 회전변환등을 t_object 구조체에 추가할 것이기 때문에 미리 수정해둔 것.
 
 t_bool	hit_sphere(t_object *sp_obj, t_ray *ray, t_hit_record *rec)
 {

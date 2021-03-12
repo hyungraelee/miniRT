@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bitmap.h                                           :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 13:39:02 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 23:45:56 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/11 23:56:13 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/11 23:56:32 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITMAP_H
-# define BITMAP_H
+#include "minirt.h"
 
-
-int	bitmap(char *argv, t_vars *vars);
-
-#endif
+t_scene	*scene_init()
+{
+	t_scene	*scene;
+	if (!(scene = (t_scene *)malloc(sizeof(t_scene))))
+		return (NULL);
+	scene->camera = NULL;
+	scene->light = NULL;
+	scene->world = NULL;
+	scene->min_width = 480;
+	scene->min_height = 480;
+	return (scene);
+}

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:16:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 15:20:23 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/11 23:55:27 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ t_vec3		vmin(t_vec3 a, t_vec3 b);
 
 // object util
 void		oadd(t_object **list, t_object *new);
+
+int			check_input_file(char *argv);
 
 #endif

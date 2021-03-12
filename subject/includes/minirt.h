@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:34:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 17:06:34 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 00:05:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@
 # include "panel.h"
 # include "get_next_line.h"
 
-
+int		minirt(char *argv, t_vars *vars);
+t_scene	*scene_init();
+int		print_err(int err_code);
 #endif

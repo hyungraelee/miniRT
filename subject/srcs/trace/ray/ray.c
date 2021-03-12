@@ -6,13 +6,12 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 11:34:28 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 13:42:47 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 12:52:45 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// set Ray
 t_ray	ray(t_point3 orig, t_vec3 dir)
 {
 	t_ray	ray;
@@ -22,7 +21,6 @@ t_ray	ray(t_point3 orig, t_vec3 dir)
 	return (ray);
 }
 
-// set primaryRay
 t_ray	ray_primary(t_camera *cam, double u, double v)
 {
 	t_ray	ray;
@@ -45,8 +43,6 @@ t_hit_record	record_init(void)
 	t_hit_record	record;
 
 	record.tmin = EPSILON;
-	// double에서 근사치를 사용하기 때문에 약간의 보정이 필요해서?
-	// '버림'을 해버리기 떄문에 한 점에서 second ray를 쏠 때 점 내부에서 밖으로 못나올 수 있음.
 	record.tmax = INFINITY;
 	return (record);
 }

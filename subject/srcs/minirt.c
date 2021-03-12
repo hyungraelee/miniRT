@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bitmap.h                                           :+:      :+:    :+:   */
+/*   minirt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/09 13:39:02 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 23:45:56 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/11 23:57:35 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/11 23:57:52 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITMAP_H
-# define BITMAP_H
+#include "minirt.h"
 
-
-int	bitmap(char *argv, t_vars *vars);
-
-#endif
+int	minirt(char *argv, t_vars *vars)
+{
+	vars->mlx = mlx_init();
+	mlx_get_screen_size(vars->mlx, &(vars->scene->max_width), &(vars->scene->max_height));
+	if (!(parse_rt(argv, vars->scene)))
+		return (0);
+	if (!(set_mlx(vars)))
+		return (-1);
+	rendering(vars);
+	if (!(handle_hook(vars)))
+		return (-1);
+	mlx_loop(vars->mlx);
+	return (1);
+}
