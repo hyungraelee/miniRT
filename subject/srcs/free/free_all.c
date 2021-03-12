@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 17:08:52 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 18:12:46 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/13 00:50:17 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_list(t_object **obj)
 	t_object	*tmp;
 	t_object	*cur;
 
+	if (obj == NULL)
+		return ;
 	cur = *obj;
 	while (cur->next)
 	{
@@ -27,6 +29,13 @@ void	free_list(t_object **obj)
 	}
 	free(cur->element);
 	free(cur);
+}
+
+void	free_scene(t_vars *vars)
+{
+	if (vars->scene == NULL)
+		return ;
+	free(vars->scene);
 }
 
 void	free_split(char **str)

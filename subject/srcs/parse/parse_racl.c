@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 00:10:44 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 18:07:42 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 23:31:33 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	info_r(char **info, t_scene *scene)
 	int	width;
 	int	height;
 
+	scene->cnt_r++;
 	if (!check_err_r(info))
 		return (0);
 	width = ft_atoi(info[1]);
@@ -38,6 +39,7 @@ int	info_a(char **info, t_scene *scene)
 	char		**tmp;
 	t_color3	color;
 
+	scene->cnt_a++;
 	if (!check_err_a(info))
 		return (0);
 	tmp = ft_split(info[2], ',');
@@ -57,6 +59,7 @@ int	info_c(char **info, t_scene *scene)
 	double		degrees;
 	char		**tmp;
 
+	scene->cnt_c++;
 	if (!check_err_c(info))
 		return (0);
 	tmp = ft_split(info[1], ',');
@@ -65,6 +68,8 @@ int	info_c(char **info, t_scene *scene)
 	tmp = ft_split(info[2], ',');
 	normal = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
 	free_split(tmp);
+	if (normal.x == 0 && normal.y == 0 && normal.z == 0)
+		return (0);
 	degrees = ft_atod(info[3]);
 	oadd(&scene->camera, object(CAM, \
 	camera(&scene->canvas, orig, normal, degrees), color3(0, 0, 0)));
@@ -78,6 +83,7 @@ int	info_l(char **info, t_scene *scene)
 	t_color3	color;
 	char		**tmp;
 
+	scene->cnt_l++;
 	if (!check_err_l(info))
 		return (0);
 	tmp = ft_split(info[1], ',');

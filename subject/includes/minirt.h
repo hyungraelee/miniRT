@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:34:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 17:50:56 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/13 00:39:15 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@
 
 int		minirt(char *argv, t_vars *vars);
 t_scene	*scene_init();
-int		print_err(int err_code);
+int		print_err(int err_code, t_vars *vars);
 #endif

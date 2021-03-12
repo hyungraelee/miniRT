@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 13:52:55 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 15:27:50 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 23:11:10 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,15 @@ static void	set_bitmap(t_vars *vars, int fd)
 	write(fd, bmp_info, 40);
 }
 
-static void	save_bitmap(t_vars *vars)
+static int	save_bitmap(t_vars *vars)
 {
 	int				fd;
 	int				i;
 	int				j;
 	unsigned int	*img;
 
-	fd = open("./image.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	if ((fd = open("./image.bmp", O_WRONLY | O_CREAT | O_TRUNC, 0666)) < 0)
+		return (0);
 	set_bitmap(vars, fd);
 	rendering_bmp(vars);
 	j = 0;
@@ -102,6 +103,7 @@ static void	save_bitmap(t_vars *vars)
 		j++;
 	}
 	close(fd);
+	return (1);
 }
 
 int			bitmap(char *argv, t_vars *vars)
@@ -113,6 +115,7 @@ int			bitmap(char *argv, t_vars *vars)
 		return (0);
 	if (!(set_mlx_bmp(vars)))
 		return (-1);
-	save_bitmap(vars);
+	if (!(save_bitmap(vars)))
+		return (0);
 	return (1);
 }

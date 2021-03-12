@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 19:08:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 16:34:36 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 23:26:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,10 @@ struct	s_scene
 	int				max_height;
 	int				min_width;
 	int				min_height;
+	int				cnt_r;
+	int				cnt_a;
+	int				cnt_c;
+	int				cnt_l;
 };
 
 struct	s_object
