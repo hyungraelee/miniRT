@@ -5,7 +5,7 @@ HEADER = libft.h
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
-AR = ar rcv
+AR = ar rc
 RM = rm -f
 
 SRCS =	\
@@ -63,9 +63,9 @@ OBJS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(AR) $@ $^
+	@$(AR) $@ $^
 .c.o : $(SRCS) $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 # bonus : $(OBJS) $(BONUS_OBJS)
 # 	$(AR) $(NAME) $^
 clean :

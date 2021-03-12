@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 16:44:54 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 15:19:36 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:25:23 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		ft_strlen_gnl(char *s)
 {
 	int	len;
+
 	len = 0;
 	if (!s)
 		return (0);
@@ -22,6 +23,7 @@ int		ft_strlen_gnl(char *s)
 		len++;
 	return (len);
 }
+
 char	*ft_strjoin_gnl(char *save, char *buff)
 {
 	int		i;
@@ -29,6 +31,7 @@ char	*ft_strjoin_gnl(char *save, char *buff)
 	int		save_len;
 	int		buff_len;
 	char	*dest;
+
 	save_len = ft_strlen_gnl(save);
 	buff_len = ft_strlen_gnl(buff);
 	if (!(dest = (char *)malloc(save_len + buff_len + 1)))

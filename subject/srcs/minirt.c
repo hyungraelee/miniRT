@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 23:57:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 23:57:52 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:32:28 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	minirt(char *argv, t_vars *vars)
 {
 	vars->mlx = mlx_init();
-	mlx_get_screen_size(vars->mlx, &(vars->scene->max_width), &(vars->scene->max_height));
+	mlx_get_screen_size(vars->mlx, \
+	&(vars->scene->max_width), &(vars->scene->max_height));
 	if (!(parse_rt(argv, vars->scene)))
 		return (0);
 	if (!(set_mlx(vars)))

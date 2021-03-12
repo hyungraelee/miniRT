@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:31:17 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 14:32:43 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 16:10:35 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # define KEYPRESS 2
 # define KEYRELEASE 3
-# define KEYPRESSMASK (1L<<0)
-# define KEYRELEASEMASK (1L<<1)
 
 # define KEY_ESCAPE			53
 # define KEY_F1 			122

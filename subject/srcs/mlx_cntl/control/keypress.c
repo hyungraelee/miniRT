@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 00:46:29 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 00:57:48 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:30:37 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,21 @@ void	keypress_np(int keycode, t_vars *vars)
 
 void	keypress_transform(int keycode, t_vars *vars)
 {
-	if ((keycode == KEY_T || keycode == KEY_R || keycode == KEY_S) && vars->mode->selected != OFF)
+	if ((keycode == KEY_T || keycode == KEY_R || keycode == KEY_S) \
+	&& vars->mode->selected != OFF)
 	{
 		if (keycode == KEY_T)
 			vars->mode->trans = TRANSLATE;
 		else if (keycode == KEY_R)
 		{
-			if (vars->cur->type == PL || vars->cur->type == CY || vars->cur->type == SQ || vars->cur->type == CAM)
+			if (vars->cur->type == PL || vars->cur->type == CY \
+			|| vars->cur->type == SQ || vars->cur->type == CAM)
 				vars->mode->trans = ROTATE;
 		}
 		else if (keycode == KEY_S)
 		{
-			if (vars->cur->type == SP || vars->cur->type == SQ || vars->cur->type == CY)
+			if (vars->cur->type == SP || vars->cur->type == SQ \
+			|| vars->cur->type == CY)
 				vars->mode->trans = SCALE;
 		}
 		del_flag_in_trans(vars);
@@ -80,7 +83,8 @@ void	keypress_transform(int keycode, t_vars *vars)
 
 void	keypress_axis(int keycode, t_vars *vars)
 {
-	if (keycode == KEY_X || keycode == KEY_Y || keycode == KEY_Z)
+	if ((keycode == KEY_X || keycode == KEY_Y || keycode == KEY_Z) && \
+	(vars->mode->trans == TRANSLATE || vars->mode->trans == ROTATE))
 	{
 		if (keycode == KEY_X)
 			vars->mode->axis = X;
@@ -94,12 +98,16 @@ void	keypress_axis(int keycode, t_vars *vars)
 
 void	keypress_sign(int keycode, t_vars *vars)
 {
-	if (keycode == KEY_UP || keycode == KEY_DOWN)
+	if (((vars->mode->trans == TRANSLATE || vars->mode->trans == ROTATE) && \
+	vars->mode->axis != OFF) || vars->mode->trans == SCALE)
 	{
-		if (keycode == KEY_UP)
-			vars->mode->sign = PLUS;
-		else if (keycode == KEY_DOWN)
-			vars->mode->sign = MINUS;
-		transform_scene(vars);
+		if (keycode == KEY_UP || keycode == KEY_DOWN)
+		{
+			if (keycode == KEY_UP)
+				vars->mode->sign = PLUS;
+			else if (keycode == KEY_DOWN)
+				vars->mode->sign = MINUS;
+			transform_scene(vars);
+		}
 	}
 }

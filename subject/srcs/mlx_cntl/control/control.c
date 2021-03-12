@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:14:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 01:00:01 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:29:45 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	close_window(t_vars *vars)
 	exit(0);
 }
 
-int		handle_keypress(int keycode, t_vars *vars)
+int	handle_keypress(int keycode, t_vars *vars)
 {
 	keypress_obj(keycode, vars);
 	keypress_np(keycode, vars);

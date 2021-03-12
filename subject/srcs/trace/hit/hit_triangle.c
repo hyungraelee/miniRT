@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:36:24 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/03 15:41:22 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 14:50:01 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_bool	check_in_out(t_point3 p, t_triangle *tr)
+static t_bool	check_in_out(t_point3 p, t_triangle *tr)
 {
 	t_vec3		ab;
 	t_vec3		bc;
@@ -30,7 +30,7 @@ t_bool	check_in_out(t_point3 p, t_triangle *tr)
 	return (TRUE);
 }
 
-t_bool	hit_triangle(t_object *tr_obj, t_ray *ray, t_hit_record *rec)
+t_bool			hit_triangle(t_object *tr_obj, t_ray *ray, t_hit_record *rec)
 {
 	t_triangle	*tr;
 	double		d;
@@ -41,8 +41,8 @@ t_bool	hit_triangle(t_object *tr_obj, t_ray *ray, t_hit_record *rec)
 	if (fabs(vdot(tr->normal, ray->dir)) <= EPSILON)
 		return (FALSE);
 	d = vdot(tr->normal, tr->a) * (-1);
-	root = (-1) * (vdot(tr->normal, ray->orig) + d) / vdot(tr->normal, ray->dir);
-	//
+	root = (-1) * (vdot(tr->normal, ray->orig) + d) / \
+	vdot(tr->normal, ray->dir);
 	if (root < rec->tmin || root > rec->tmax)
 		return (FALSE);
 	p = ray_at(ray, root);

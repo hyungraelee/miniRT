@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 23:26:07 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 12:48:58 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 16:27:44 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,22 @@ void		make_viewport(t_camera *camera)
 	n_y = vunit(vcross(camera->normal, n_x));
 	camera->horizontal = vmul(n_x, camera->viewport_w);
 	camera->vertical = vmul(n_y, camera->viewport_h);
-	camera->left_bottom = vsum(vsub(vsub(camera->orig, vdiv(camera->horizontal, 2)), vdiv(camera->vertical, 2)), vunit(camera->normal));
+	camera->left_bottom = vsum(vsub(vsub(camera->orig, \
+	vdiv(camera->horizontal, 2)), vdiv(camera->vertical, 2)), \
+	vunit(camera->normal));
 }
 
-t_camera	*camera(t_canvas *canvas, t_point3 orig, t_vec3 normal, double degrees)
+t_camera	*camera(t_canvas *canvas, t_point3 ori, t_vec3 norm, double degree)
 {
 	t_camera	*cam;
 	double		viewport_width;
 	double		fov;
 
 	cam = (t_camera *)malloc(sizeof(t_camera));
-	fov = (M_PI / 180) * degrees;
+	fov = (M_PI / 180) * degree;
 	viewport_width = 2.0 * tan(fov / 2);
-	cam->orig = orig;
-	cam->normal = normal;
+	cam->orig = ori;
+	cam->normal = norm;
 	cam->viewport_w = viewport_width;
 	cam->viewport_h = viewport_width / canvas->aspect_ratio;
 	cam->focal_len = 1.0;

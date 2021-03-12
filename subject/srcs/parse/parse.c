@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 00:12:43 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 16:45:15 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ static int	handle_info(char **info, t_scene *scene)
 	if (!(check_info_err(info)))
 		return (0);
 	if (!(ft_strcmp(info[0], "R")))
-		return(info_r(info, scene));
+		return (info_r(info, scene));
 	else if (!(ft_strcmp(info[0], "A")))
-		return(info_a(info, scene));
+		return (info_a(info, scene));
 	else if (!(ft_strcmp(info[0], "c")))
-		return(info_c(info, scene));
+		return (info_c(info, scene));
 	else if (!(ft_strcmp(info[0], "l")))
-		return(info_l(info, scene));
+		return (info_l(info, scene));
 	else if (!(ft_strcmp(info[0], "sp")))
-		return(info_sp(info, scene, &scene->world));
+		return (info_sp(info, scene));
 	else if (!(ft_strcmp(info[0], "pl")))
-		return(info_pl(info, scene, &scene->world));
+		return (info_pl(info, scene));
 	else if (!(ft_strcmp(info[0], "sq")))
-		return(info_sq(info, scene, &scene->world));
+		return (info_sq(info, scene));
 	else if (!(ft_strcmp(info[0], "cy")))
-		return(info_cy(info, scene, &scene->world));
+		return (info_cy(info, scene));
 	else if (!(ft_strcmp(info[0], "tr")))
-		return(info_tr(info, scene, &scene->world));
+		return (info_tr(info, scene));
 	else
 		return (1);
 }
@@ -48,7 +48,7 @@ int			parse_rt(char *argv, t_scene *scene)
 	fd = open(argv, O_RDONLY);
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
-		info = ft_split(line,' ');
+		info = ft_split(line, ' ');
 		if (!handle_info(info, scene))
 			return (0);
 		free(line);

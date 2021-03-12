@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 17:17:17 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/05 15:19:30 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:25:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int		is_newline(char *save)
 {
 	int	i;
+
 	if (!save)
 		return (0);
 	i = 0;
@@ -26,11 +27,13 @@ int		is_newline(char *save)
 	}
 	return (0);
 }
+
 char	*get_line(char *save)
 {
 	int		i;
 	int		dest_len;
 	char	*dest;
+
 	dest_len = 0;
 	while (save[dest_len] != '\n' && save[dest_len])
 		dest_len++;
@@ -42,12 +45,14 @@ char	*get_line(char *save)
 	dest[i] = '\0';
 	return (dest);
 }
+
 char	*get_save(char *save)
 {
 	int		i;
 	int		j;
 	int		save_len;
 	char	*dest;
+
 	save_len = ft_strlen_gnl(save);
 	i = 0;
 	while (save[i] != '\n' && save[i])
@@ -67,11 +72,13 @@ char	*get_save(char *save)
 	free(save);
 	return (dest);
 }
+
 int		get_next_line(int fd, char **line)
 {
 	char		*buff;
 	static char	*save;
 	int			read_len;
+
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(buff = (char *)malloc(BUFFER_SIZE + 1)))

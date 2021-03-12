@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 19:08:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/10 15:12:09 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 16:34:36 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,17 @@
 
 # define _USE_MATH_DEFINES
 
-// 1. 공용 구조�?
 typedef struct s_vec3		t_vec3;
 typedef struct s_vec3		t_point3;
 typedef struct s_vec3		t_color3;
 typedef struct s_ray		t_ray;
 typedef struct s_hit_record	t_hit_record;
 
-// 2. ?���? 구조�?
 typedef struct s_camera		t_camera;
 typedef struct s_canvas		t_canvas;
 typedef struct s_ambient	t_ambient;
 typedef struct s_scene		t_scene;
 
-// 3. ?��브젝?�� 구조�?
 typedef struct s_object		t_object;
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
@@ -41,20 +38,18 @@ typedef struct s_img		t_img;
 typedef struct s_vars		t_vars;
 typedef struct s_mode		t_mode;
 
-typedef struct s_bitmapfileheader	t_bitmapfileheader;
-typedef struct s_bitmapinfoheader	t_bitmapinfoheader;
-// 4. ?��별자 매크�?
+typedef struct s_phong		t_phong;
+
 typedef int					t_bool;
 # define FALSE 0
 # define TRUE 1
 
-// 5. �??�� 구조�? �? 매크�?
 # define X 1
 # define Y 2
 # define Z 3
 # define PLUS 4
 # define MINUS 5
-# define THETA (M_PI / (double)18)
+# define THETA 0.175
 
 typedef int					t_object_type;
 # define SP 1
@@ -71,11 +66,9 @@ typedef int					t_object_type;
 # define SCALE 3
 # define OFF 0
 
-// ?���? ?��??? �?
 # define EPSILON 1e-6
 # define LUMEN 3
 
-// 공용 구조�?
 struct	s_vec3
 {
 	double	x;
@@ -83,13 +76,13 @@ struct	s_vec3
 	double	z;
 };
 
-struct s_ray
+struct	s_ray
 {
 	t_point3	orig;
 	t_vec3		dir;
 };
 
-struct s_hit_record
+struct	s_hit_record
 {
 	t_point3	p;
 	t_vec3		normal;
@@ -100,8 +93,7 @@ struct s_hit_record
 	t_color3	albedo;
 };
 
-// ?���? 구조�?
-struct s_camera
+struct	s_camera
 {
 	t_point3	orig;
 	t_vec3		normal;
@@ -113,7 +105,7 @@ struct s_camera
 	t_point3	left_bottom;
 };
 
-struct s_canvas
+struct	s_canvas
 {
 	int		width;
 	int		height;
@@ -126,7 +118,7 @@ struct	s_ambient
 	t_color3	ambient_color;
 };
 
-struct				s_scene
+struct	s_scene
 {
 	t_canvas		canvas;
 	t_object		*camera;
@@ -141,8 +133,7 @@ struct				s_scene
 	int				min_height;
 };
 
-// ?��브젝?�� 구조�?
-struct s_object
+struct	s_object
 {
 	t_object_type	type;
 	void			*element;
@@ -151,21 +142,28 @@ struct s_object
 	t_color3		albedo;
 };
 
-struct s_sphere
+struct	s_sphere
 {
 	t_point3	center;
 	double		diameter;
 	double		radius;
 	double		radius2;
+	double		a;
+	double		half_b;
+	double		c;
+	double		discriminant;
+	double		sqrtd;
+	t_vec3		oc;
+	double		root;
 };
 
-struct s_plane
+struct	s_plane
 {
 	t_point3	center;
 	t_vec3		normal;
 };
 
-struct s_triangle
+struct	s_triangle
 {
 	t_point3	a;
 	t_point3	b;
@@ -173,7 +171,7 @@ struct s_triangle
 	t_vec3		normal;
 };
 
-struct s_cylinder
+struct	s_cylinder
 {
 	t_point3	center;
 	t_vec3		normal;
@@ -181,34 +179,48 @@ struct s_cylinder
 	double		radius;
 	double		radius2;
 	double		height;
+	t_point3	h;
+	t_vec3		h_unit;
+	t_vec3		co;
+	double		a;
+	double		half_b;
+	double		c;
+	double		discriminant;
+	double		root;
+	double		sqrtd;
+	t_point3	p;
+	double		h_range;
 };
 
-struct s_square
+struct	s_square
 {
 	t_point3	center;
 	t_vec3		normal;
 	double		length;
+	double		root;
+	t_point3	p;
+	t_vec3		n_x;
+	t_vec3		n_y;
+	t_vec3		cp;
 };
 
-struct s_light
+struct	s_light
 {
 	t_point3	origin;
 	t_color3	light_color;
 	double		bright_ratio;
 };
 
-// �??�� 구조�?
-
-struct  s_vars {
-		void		*mlx;
-		void		*win;
-		t_scene		*scene;
-		t_img		*img;
-		t_mode		*mode;
-		t_object	*cur;
+struct	s_vars {
+	void		*mlx;
+	void		*win;
+	t_scene		*scene;
+	t_img		*img;
+	t_mode		*mode;
+	t_object	*cur;
 };
 
-struct s_img {
+struct	s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -216,11 +228,27 @@ struct s_img {
 	int		endian;
 };
 
-struct s_mode {
-	t_object_type		selected;
-	int					trans;
-	int					axis;
-	int					sign;
+struct	s_mode {
+	t_object_type	selected;
+	int				trans;
+	int				axis;
+	int				sign;
+};
+
+struct	s_phong {
+	t_color3	ambient;
+	t_color3	diffuse;
+	t_color3	specular;
+	t_vec3		light_dir;
+	double		light_len;
+	t_ray		light_ray;
+	t_vec3		view_dir;
+	t_vec3		reflect_dir;
+	double		kd;
+	double		ks;
+	double		ksn;
+	double		spec;
+	double		brightness;
 };
 
 #endif

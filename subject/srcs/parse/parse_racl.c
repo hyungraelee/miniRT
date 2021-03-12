@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 00:10:44 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 00:11:28 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 16:02:11 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	info_r(char	**info, t_scene *scene)
+int	info_r(char **info, t_scene *scene)
 {
 	int	width;
 	int	height;
@@ -35,14 +35,14 @@ int	info_r(char	**info, t_scene *scene)
 
 int	info_a(char **info, t_scene *scene)
 {
-	char		**element;
+	char		**tmp;
 	t_color3	color;
 
 	if (!check_err_a(info))
 		return (0);
-	element = ft_split(info[2], ',');
-	color = color3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
-	free(element);
+	tmp = ft_split(info[2], ',');
+	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
+	free(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);
@@ -55,18 +55,19 @@ int	info_c(char **info, t_scene *scene)
 	t_point3	orig;
 	t_vec3		normal;
 	double		degrees;
-	char		**element;
+	char		**tmp;
 
 	if (!check_err_c(info))
 		return (0);
-	element = ft_split(info[1], ',');
-	orig = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
-	free(element);
-	element = ft_split(info[2], ',');
-	normal = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
-	free(element);
+	tmp = ft_split(info[1], ',');
+	orig = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
+	free(tmp);
+	tmp = ft_split(info[2], ',');
+	normal = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
+	free(tmp);
 	degrees = ft_atod(info[3]);
-	oadd(&scene->camera, object(CAM, camera(&scene->canvas, orig, normal, degrees), color3(0, 0, 0)));
+	oadd(&scene->camera, object(CAM, \
+	camera(&scene->canvas, orig, normal, degrees), color3(0, 0, 0)));
 	return (1);
 }
 
@@ -75,20 +76,21 @@ int	info_l(char **info, t_scene *scene)
 	t_point3	position;
 	double		bright_ratio;
 	t_color3	color;
-	char		**element;
+	char		**tmp;
 
 	if (!check_err_l(info))
 		return (0);
-	element = ft_split(info[1], ',');
-	position = point3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
-	free(element);
+	tmp = ft_split(info[1], ',');
+	position = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
+	free(tmp);
 	bright_ratio = ft_atod(info[2]);
-	element = ft_split(info[3], ',');
-	color = color3(ft_atod(element[0]), ft_atod(element[1]), ft_atod(element[2]));
-	free(element);
+	tmp = ft_split(info[3], ',');
+	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
+	free(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);
-	oadd(&scene->light, object(LIGHT_POINT, light_point(position, color, bright_ratio), color3(0, 0, 0)));
+	oadd(&scene->light, object(LIGHT_POINT, \
+	light_point(position, color, bright_ratio), color3(0, 0, 0)));
 	return (1);
 }

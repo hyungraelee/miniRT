@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 00:49:41 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 01:00:10 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:29:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	transform_scene(t_vars *vars)
 	else if (vars->mode->trans == ROTATE)
 	{
 		rotate(vars->cur, vars->mode->axis, vars->mode->sign);
-
 		if (vars->cur->type == CAM)
 			make_viewport(vars->cur->element);
 	}

@@ -6,15 +6,16 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 23:56:13 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 23:56:32 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:29:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_scene	*scene_init()
+t_scene	*scene_init(void)
 {
 	t_scene	*scene;
+
 	if (!(scene = (t_scene *)malloc(sizeof(t_scene))))
 		return (NULL);
 	scene->camera = NULL;

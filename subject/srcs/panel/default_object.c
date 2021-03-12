@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 18:14:17 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 18:14:18 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/11 18:37:58 by jkeum             #+#    #+#             */
+/*   Updated: 2021/03/12 16:37:45 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	line_four_six(void)
 	printf(":\t\t\t\t\t       :\n");
 }
 
-void	default_object(void)
+void		default_object(void)
 {
 	line_one_three();
 	line_four_six();

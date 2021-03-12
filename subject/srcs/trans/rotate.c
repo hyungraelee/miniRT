@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 17:30:43 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/08 16:44:00 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 15:34:44 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec3	rotate_z(t_vec3	normal, int sign)
+t_vec3	rotate_z(t_vec3 normal, int sign)
 {
 	t_vec3	result;
 
@@ -43,7 +43,6 @@ t_vec3	rotate_x(t_vec3 normal, int sign)
 	{
 		result.y = normal.y * cos(-THETA) - normal.z * sin(-THETA);
 		result.z = normal.y * sin(-THETA) + normal.z * cos(-THETA);
-
 	}
 	result.x = normal.x;
 	return (result);

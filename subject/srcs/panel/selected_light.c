@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/11 18:14:32 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/11 18:14:34 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/11 18:38:06 by jkeum             #+#    #+#             */
+/*   Updated: 2021/03/12 16:37:49 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	line_four_six(void)
 	printf(":\t\t\t\t\t       :\n");
 }
 
-void	selected_light(void)
+void		selected_light(void)
 {
 	line_one_three();
 	line_four_six();

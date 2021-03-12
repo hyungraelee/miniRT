@@ -1,6 +1,6 @@
 NAME = miniRT
 CC = gcc
-CFLAGS = -g3 -fsanitize=address #-Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 AR = ar
 ARFLAGS = rc
 SRCS =	./srcs/main.c						\
@@ -25,6 +25,7 @@ SRCS =	./srcs/main.c						\
 		./srcs/scene/canvas.c				\
 		./srcs/scene/ambient.c				\
 		./srcs/scene/object_create.c		\
+		./srcs/scene/create_objs.c			\
 		./srcs/trace/hit/hit.c				\
 		./srcs/trace/hit/normal.c			\
 		./srcs/trace/hit/hit_cylinder.c		\
@@ -37,8 +38,12 @@ SRCS =	./srcs/main.c						\
 		./srcs/trans/translate.c			\
 		./srcs/trans/rotate.c				\
 		./srcs/trans/scale.c				\
+		./srcs/trans/trans_utils.c				\
 		./srcs/utils/object_utils.c			\
 		./srcs/utils/vec3_utils.c			\
+		./srcs/utils/vec3_utils1.c			\
+		./srcs/utils/vec3_utils2.c			\
+		./srcs/utils/vec3_utils3.c			\
 		./srcs/utils/check_input.c			\
 		./srcs/bitmap/bitmap.c				\
 		./srcs/panel/axis_panel.c			\
@@ -82,9 +87,6 @@ $(NAME) : $(OBJS)
 	@$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx
 	@install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) $(NAME)
 
-$(OBJS_DIR) :
-	# @mkdir -p $(OBJ_DIR)
-
 $(OBJS_DIR)/%.o : %.c
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(CFLAGS) -o $@ -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(INC) -c $<
@@ -98,5 +100,6 @@ clean :
 
 fclean : clean
 	@$(RM) $(NAME)
+	@$(RM) *.bmp
 
 re : fclean all
