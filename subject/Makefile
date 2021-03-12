@@ -1,6 +1,6 @@
 NAME = miniRT
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 AR = ar
 ARFLAGS = rc
 SRCS =	./srcs/main.c							\
