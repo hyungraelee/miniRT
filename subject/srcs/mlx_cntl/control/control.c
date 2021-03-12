@@ -6,13 +6,13 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:14:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 17:11:33 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 18:18:58 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	close_window(t_vars *vars)
+static int	close_window(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	free_all(vars);
@@ -20,7 +20,7 @@ int	close_window(t_vars *vars)
 	exit(0);
 }
 
-int	handle_keypress(int keycode, t_vars *vars)
+int			handle_keypress(int keycode, t_vars *vars)
 {
 	keypress_obj(keycode, vars);
 	keypress_np(keycode, vars);
@@ -33,7 +33,7 @@ int	handle_keypress(int keycode, t_vars *vars)
 	return (1);
 }
 
-int	handle_hook(t_vars *vars)
+int			handle_hook(t_vars *vars)
 {
 	if (!(vars->mode = (t_mode *)malloc(sizeof(t_mode))))
 		return (0);
