@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 17:08:52 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/13 01:44:11 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/13 03:57:16 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	free_list(t_object **obj)
 	if (obj == NULL || *obj == NULL)
 		return ;
 	cur = *obj;
+	while (cur->pre)
+		cur = cur->pre;
 	while (cur->next)
 	{
 		tmp = cur;
