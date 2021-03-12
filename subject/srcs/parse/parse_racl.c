@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 00:10:44 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 16:02:11 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 18:07:42 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	info_a(char **info, t_scene *scene)
 		return (0);
 	tmp = ft_split(info[2], ',');
 	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);
@@ -61,10 +61,10 @@ int	info_c(char **info, t_scene *scene)
 		return (0);
 	tmp = ft_split(info[1], ',');
 	orig = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[2], ',');
 	normal = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	degrees = ft_atod(info[3]);
 	oadd(&scene->camera, object(CAM, \
 	camera(&scene->canvas, orig, normal, degrees), color3(0, 0, 0)));
@@ -82,11 +82,11 @@ int	info_l(char **info, t_scene *scene)
 		return (0);
 	tmp = ft_split(info[1], ',');
 	position = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	bright_ratio = ft_atod(info[2]);
 	tmp = ft_split(info[3], ',');
 	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);

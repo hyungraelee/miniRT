@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_utils.c                                     :+:      :+:    :+:   */
+/*   free.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 19:13:50 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 17:28:38 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/12 17:48:43 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/12 18:00:56 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef FREE_H
+# define FREE_H
 
-void	oadd(t_object **list, t_object *new)
-{
-	t_object	*cur;
-	void		*tmp;
+void	free_all(t_vars *vars);
+void	free_split(char **str);
 
-	if (*list == NULL)
-	{
-		*list = new;
-		new->pre = NULL;
-		return ;
-	}
-	cur = *list;
-	while (cur->next)
-		cur = cur->next;
-	tmp = cur;
-	cur->next = new;
-	new->pre = tmp;
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 00:11:52 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 16:44:43 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 18:08:09 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	info_sp(char **info, t_scene *scene)
 		return (0);
 	tmp = ft_split(info[1], ',');
 	center = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	diameter = ft_atod(info[2]);
 	tmp = ft_split(info[3], ',');
 	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);
@@ -46,13 +46,13 @@ int	info_pl(char **info, t_scene *scene)
 		return (0);
 	tmp = ft_split(info[1], ',');
 	center = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[2], ',');
 	normal = vec3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[3], ',');
 	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);
@@ -72,14 +72,14 @@ int	info_sq(char **info, t_scene *scene)
 		return (0);
 	tmp = ft_split(info[1], ',');
 	center = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[2], ',');
 	normal = vec3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	length = ft_atod(info[3]);
 	tmp = ft_split(info[4], ',');
 	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);
@@ -98,13 +98,13 @@ int	info_cy(char **info, t_scene *scene)
 		return (0);
 	tmp = ft_split(info[1], ',');
 	center = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[2], ',');
 	normal = vec3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[5], ',');
 	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);
@@ -125,16 +125,16 @@ int	info_tr(char **info, t_scene *scene)
 		return (0);
 	tmp = ft_split(info[1], ',');
 	a = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[2], ',');
 	b = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[3], ',');
 	c = point3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	tmp = ft_split(info[4], ',');
 	color = color3(ft_atod(tmp[0]), ft_atod(tmp[1]), ft_atod(tmp[2]));
-	free(tmp);
+	free_split(tmp);
 	if (!check_color(color))
 		return (0);
 	color = vdiv(color, 255.0);

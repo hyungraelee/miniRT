@@ -1,32 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_utils.c                                     :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 19:13:50 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 17:28:38 by hyunlee          ###   ########.fr       */
+/*   Created: 2021/03/12 17:08:52 by hyunlee           #+#    #+#             */
+/*   Updated: 2021/03/12 18:12:46 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	oadd(t_object **list, t_object *new)
+void	free_list(t_object **obj)
 {
+	t_object	*tmp;
 	t_object	*cur;
-	void		*tmp;
 
-	if (*list == NULL)
-	{
-		*list = new;
-		new->pre = NULL;
-		return ;
-	}
-	cur = *list;
+	cur = *obj;
 	while (cur->next)
+	{
+		tmp = cur;
+		free(tmp->element);
 		cur = cur->next;
-	tmp = cur;
-	cur->next = new;
-	new->pre = tmp;
+		free(tmp);
+	}
+	free(cur->element);
+	free(cur);
+}
+
+void	free_split(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+void	free_all(t_vars *vars)
+{
+	free_list(&vars->scene->camera);
+	free_list(&vars->scene->light);
+	free_list(&vars->scene->world);
+	free(vars->scene);
+	free(vars->img);
+	free(vars->mode);
 }

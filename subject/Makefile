@@ -52,7 +52,9 @@ SRCS =	./srcs/main.c						\
 		./srcs/panel/object_panel.c			\
 		./srcs/panel/print_panel.c			\
 		./srcs/panel/selected_light.c		\
-		./srcs/panel/transform_panel.c
+		./srcs/panel/transform_panel.c		\
+		./srcs/free/free_all.c
+
 
 SRCS_NAME = $(SRCS:%.c=%)
 
@@ -67,7 +69,8 @@ SRCS_DIR =	./srcs				\
 			./srcs/trans		\
 			./srcs/utils		\
 			./srcs/bitmap		\
-			./srcs/panel
+			./srcs/panel		\
+			./srcs/free
 
 OBJS_DIR = ./objs
 LIBFT = libft.a

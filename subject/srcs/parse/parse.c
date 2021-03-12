@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 16:11:35 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 16:45:15 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 18:16:27 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ int			parse_rt(char *argv, t_scene *scene)
 		if (!handle_info(info, scene))
 			return (0);
 		free(line);
-		free(info);
+		free_split(info);
 	}
+	free(line);
+	close(fd);
 	if (ret < 0)
 		return (0);
 	return (1);

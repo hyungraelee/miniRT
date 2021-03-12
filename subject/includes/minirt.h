@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 16:34:18 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 15:28:41 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 17:50:56 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include "bitmap.h"
 # include "panel.h"
 # include "get_next_line.h"
+# include "free.h"
 
 int		minirt(char *argv, t_vars *vars);
 t_scene	*scene_init();

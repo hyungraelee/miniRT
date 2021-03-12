@@ -6,7 +6,7 @@
 /*   By: hyunlee <hyunlee@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 15:14:09 by hyunlee           #+#    #+#             */
-/*   Updated: 2021/03/12 15:29:45 by hyunlee          ###   ########.fr       */
+/*   Updated: 2021/03/12 17:11:33 by hyunlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	close_window(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
+	free_all(vars);
+	system("leaks miniRT");
 	exit(0);
 }
 
